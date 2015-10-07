@@ -1,5 +1,3 @@
-package arpaReader;
-
 public class NGram {
 
 	private String[] Words;
