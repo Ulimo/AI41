@@ -11,4 +11,29 @@ public class NGram {
 		Probability = propbability;
 		this.Backoff = Backoff;
 	}
+	
+	public int NGramSize()
+	{
+		return Words.length;
+	}
+	
+	public String[] GetWords()
+	{
+		return Words;
+	}
+	
+	public String GetWord(int i)
+	{
+		return Words[i];
+	}
+	
+	public double GetProbability()
+	{
+		return Probability;
+	}
+	
+	public double GetBackoff()
+	{
+		return Backoff;
+	}
 }
