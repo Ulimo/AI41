@@ -1,4 +1,3 @@
-package arpaReader;
 
 public class NGramHandler {
 
