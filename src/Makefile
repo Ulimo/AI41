@@ -12,15 +12,15 @@ CLASSPATH = .
 CFLAGS = -g -classpath "$(CLASSPATH)"
 
 #source and class files
-MAIN_FILE = [MAIN_FILE]
-SOURCE_FILES =
+MAIN_FILE = Main.java
+SOURCE_FILES = ArpaRead.java NGramHandler.java NGram.java
 CLASSFILES = $(MAIN_FILE:.java=.class) $(SOURCE_FILES:.java=.class)
 
 #Parameters to send to the programme on 'make run'
-PARAMS = [PROGRAM PARAMETER LIST]
+PARAMS =
 
 #'-ea' to enable assertions during execution. O.w. blank.
-ASSERT =
+ASSERT = -ea
 
 all: $(CLASSFILES)
 
@@ -37,3 +37,5 @@ clean:
 	rm -f $(CLASSFILES)
 run: $(CLASSFILES)
 	java -classpath "$(CLASSPATH)" $(ASSERT) $(MAIN_FILE:.java=) $(PARAMS)
+debug: $(CLASSFILES)
+	jdb $(MAIN_FILE:.java=)
