@@ -1,5 +1,6 @@
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
@@ -15,7 +16,7 @@ public class ArpaRead {
 	public ArpaRead(Path path)
 	{
 		try {
-			List<String> lines = Files.readAllLines(path);
+			List<String> lines = Files.readAllLines(path, Charset.defaultCharset());
 			ReadLines(lines);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
