@@ -62,15 +62,49 @@ public class NGramHandler {
 		}
 		return new int[] {s, r};
 	}
+
+	private NGram[] MostProbable(int start, final int end, final int size) {
+		assert start >= 0;
+		assert end > 0;
+		assert end-start >= size;
+
+		NGram[] res = new NGram[size];
+		double[] probs = new double[size];
+
+		for (double d : probs) {
+			d=0.0;
+		}
+
+		for ( ; start < end ; ++start ) {
+			for ( int i=0 ; i<size ; ++i ) {
+				if(res[i]==null) {
+					res[i]=grams[start];
+				}
+				else {
+					if(res[i].GetProbability() < grams[start].GetProbability()) {
+						for(int j=size-1; j>i; ++j) {
+							res[j] = res[j-1];
+						}
+						res[i] = grams[start];
+					}
+				}
+			}
+		}
+		for(int i=0; i<size; ++i) {
+			assert res[i] != null;
+			if (i< size-1) {
+				assert res[i].GetProbability() > res[i+1].GetProbability();
+			}
+		}
+		return res;
+	}
 	
-	public LinkedList<NGram> getMostProbableGrams(String[] words, int PredictionCount)
+	public NGram[] getMostProbableGrams(String[] words, int PredictionCount)
 	{
 		NGram toFind = new NGram(words, 0, 0);
 		
 		int[] interval = Search(toFind);
-		
-		
-		return null;
+		return MostProbable(interval[0], interval[1], PredictionCount);
 	}
 	
 	public void AddNGram(NGram gram)

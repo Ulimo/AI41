@@ -24,7 +24,7 @@ public class NGrams {
 		SortHandlers();
 	}
 	
-	public LinkedList<NGram> GetPrediction(String sentance, int PredictionCount, int MaxNgramSize)
+	public NGram[] GetPrediction(String sentance, int PredictionCount, int MaxNgramSize)
 	{
 		sentance = sentance.toLowerCase();
 		String[] words = sentance.split("\\s+");
@@ -46,8 +46,8 @@ public class NGrams {
 				wordsToSend[x] = words[startInSentence + x];
 			}
 			
-			LinkedList<NGram> grams = handler.getMostProbableGrams(wordsToSend, PredictionCount);
-			if(grams != null && grams.size() > 0)
+			NGram[] grams = handler.getMostProbableGrams(wordsToSend, PredictionCount);
+			if(grams != null && grams.length > 0)
 			{
 				return grams;
 			}
