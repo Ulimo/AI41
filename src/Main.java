@@ -20,11 +20,11 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Path p = FileSystems.getDefault().getPath("big_test.arpa");
+		Path p = FileSystems.getDefault().getPath("model.arpa");
 		
 		NGrams grams = new NGrams(p);
 		
-		NGram[] result = grams.GetPrediction("national", 3, 5);
+		NGram[] result = grams.GetPrediction("I", 3, 5);
 		
 		InputStream modelIn = null;
 		POSTaggerME tagger = null;
