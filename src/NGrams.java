@@ -24,13 +24,13 @@ public class NGrams {
 		SortHandlers();
 	}
 	
-	public LinkedList<NGram> GetPrediction(String sentance, int PredictionCount)
+	public LinkedList<NGram> GetPrediction(String sentance, int PredictionCount, int MaxNgramSize)
 	{
 		sentance = sentance.toLowerCase();
 		String[] words = sentance.split("\\s+");
 
 		
-		int HighestGram = Math.min(words.length + 1, LargestNGramSize);
+		int HighestGram = Math.min(MaxNgramSize, Math.min(words.length + 1, LargestNGramSize));
 		//Not yet implemented, should look at the last words up to the largest n-gram size (WordCount + 1)
 		for(int i = HighestGram; i >= 1; i--)
 		{

@@ -17,7 +17,7 @@ public class Main {
 		
 		NGrams grams = new NGrams(p);
 		
-		LinkedList<NGram> result = grams.GetPrediction("national", 3);
+		LinkedList<NGram> result = grams.GetPrediction("national", 3, 5);
 		/*ArpaRead reader = new ArpaRead(p);
 		
 		HashMap<Integer, NGramHandler> grams = reader.GetNGrams();

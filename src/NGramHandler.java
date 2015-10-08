@@ -30,6 +30,7 @@ public class NGramHandler {
 		Arrays.sort(grams, 0, Number);
 	}
 	
+	//https://en.wikipedia.org/wiki/Suffix_array
 	int[] Search(NGram toFind)
 	{
 		int l = 0, r = grams.length;
