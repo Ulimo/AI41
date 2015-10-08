@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import opennlp.tools.postag.POSModel;
+import opennlp.tools.postag.POSTaggerME;
 import opennlp.uima.postag.*;
 
 public class Main {
@@ -27,10 +28,11 @@ public class Main {
 		
 		
 		InputStream modelIn = null;
-
+		POSTaggerME tagger = null;
 		try {
 		  modelIn = new FileInputStream("en-pos-maxent.bin");
 		  POSModel model = new POSModel(modelIn);
+		  tagger = new POSTaggerME(model);
 		}
 		catch (IOException e) {
 		  // Model loading failed, handle the error
@@ -39,12 +41,19 @@ public class Main {
 		finally {
 		  if (modelIn != null) {
 		    try {
+		    	
 		      modelIn.close();
 		    }
 		    catch (IOException e) {
 		    }
 		  }
 		}
+		
+		String[] sent = new String[]{"Most", "large", "cities", "in", "the", "US", "had",
+                "morning", "and", "afternoon", "newspapers", "."};
+		
+		String[] tags = tagger.tag(sent);
+		double[] probs = tagger.probs();
 		/*ArpaRead reader = new ArpaRead(p);
 		
 		HashMap<Integer, NGramHandler> grams = reader.GetNGrams();
