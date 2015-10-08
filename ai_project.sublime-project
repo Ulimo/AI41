@@ -4,5 +4,20 @@
 		{
 			"path": "."
 		}
-	]
+	],
+	"build_systems":
+    [
+        {
+            "name": "build ai project",
+            "shell_cmd": "make"
+        },
+        {
+            "name": "run ai project",
+            "shell_cmd": "make run"
+        },
+        {
+            "name": "clean ai project",
+            "shell_cmd": "make clean"
+        }
+    ]
 }
