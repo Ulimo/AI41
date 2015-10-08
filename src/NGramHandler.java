@@ -79,13 +79,15 @@ public class NGramHandler {
 			for ( int i=0 ; i<size ; ++i ) {
 				if(res[i]==null) {
 					res[i]=grams[start];
+					break;
 				}
 				else {
 					if(res[i].GetProbability() < grams[start].GetProbability()) {
-						for(int j=size-1; j>i; ++j) {
+						for(int j=size-1; j>i; --j) {
 							res[j] = res[j-1];
 						}
 						res[i] = grams[start];
+						break;
 					}
 				}
 			}
@@ -104,7 +106,8 @@ public class NGramHandler {
 		NGram toFind = new NGram(words, 0, 0);
 		
 		int[] interval = Search(toFind);
-		return MostProbable(interval[0], interval[1], PredictionCount);
+		int Predict = Math.min(PredictionCount, interval[1] - interval[0]);
+		return MostProbable(interval[0], interval[1], Predict);
 	}
 	
 	public void AddNGram(NGram gram)
