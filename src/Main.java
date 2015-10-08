@@ -24,8 +24,7 @@ public class Main {
 		
 		NGrams grams = new NGrams(p);
 		
-		LinkedList<NGram> result = grams.GetPrediction("national", 3, 5);
-		
+		NGram[] result = grams.GetPrediction("national", 3, 5);
 		
 		InputStream modelIn = null;
 		POSTaggerME tagger = null;
