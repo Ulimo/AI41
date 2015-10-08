@@ -24,7 +24,7 @@ public class Main {
 		
 		NGrams grams = new NGrams(p);
 		
-		NGram[] result = grams.GetPrediction("I", 3, 5);
+		NGram[] result = grams.GetPrediction("height of itscvcvcv", 10, 5);
 		
 		InputStream modelIn = null;
 		POSTaggerME tagger = null;
