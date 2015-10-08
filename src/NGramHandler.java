@@ -30,7 +30,7 @@ public class NGramHandler {
 		Arrays.sort(grams, 0, Number);
 	}
 	
-	public LinkedList<NGram> getMostProbableGrams(String[] words)
+	public LinkedList<NGram> getMostProbableGrams(String[] words, int PredictionCount)
 	{
 		
 		return null;

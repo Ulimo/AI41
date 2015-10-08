@@ -4,6 +4,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -16,7 +17,7 @@ public class Main {
 		
 		NGrams grams = new NGrams(p);
 		
-		grams.GetPrediction("Hello");
+		LinkedList<NGram> result = grams.GetPrediction("Hello", 3);
 		/*ArpaRead reader = new ArpaRead(p);
 		
 		HashMap<Integer, NGramHandler> grams = reader.GetNGrams();
