@@ -15,7 +15,7 @@ CFLAGS = -g -classpath "$(addprefix $(PROJECTPATH),$(SOURCEPATH))" -d $(addprefi
 
 #source and class files
 MAIN_FILE = Main.java
-SOURCE_FILES = ArpaRead.java NGramHandler.java NGram.java
+SOURCE_FILES = ArpaRead.java NGramHandler.java NGrams.java NGram.java
 CLASSFILES = $(MAIN_FILE:.java=.class) $(SOURCE_FILES:.java=.class)
 
 #Parameters to send to the programme on 'make run'
@@ -24,9 +24,9 @@ PARAMS =
 #'-ea' to enable assertions during execution. O.w. blank.
 ASSERT = -ea
 
-all: $(CLASSFILES)
+all: $(addprefix $(CLASSPATH),$(CLASSFILES))
 
-%.class: $(addprefix $(SOURCEPATH),%.java)
+$(CLASSPATH)%.class: $(addprefix $(SOURCEPATH),%.java)
 	$(CC) $(CFLAGS) $<
 
 #--- makefile dependency ---
