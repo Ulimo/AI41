@@ -8,8 +8,10 @@
 CC = javac
 
 #Enter additional classpath folders (colon separated)
-CLASSPATH = .
-CFLAGS = -g -classpath "$(CLASSPATH)"
+PROJECTPATH = /home/joho/Documents/ai/proj/
+CLASSPATH = bin/
+SOURCEPATH = src/
+CFLAGS = -g -classpath "$(addprefix $(PROJECTPATH),$(SOURCEPATH))" -d $(addprefix $(PROJECTPATH), $(CLASSPATH))
 
 #source and class files
 MAIN_FILE = Main.java
@@ -24,7 +26,7 @@ ASSERT = -ea
 
 all: $(CLASSFILES)
 
-%.class: %.java
+%.class: $(addprefix $(SOURCEPATH),%.java)
 	$(CC) $(CFLAGS) $<
 
 #--- makefile dependency ---
@@ -34,8 +36,8 @@ all: $(CLASSFILES)
 .PHONY: clean
 
 clean:
-	rm -f $(CLASSFILES)
-run: $(CLASSFILES)
-	java -classpath "$(CLASSPATH)" $(ASSERT) $(MAIN_FILE:.java=) $(PARAMS)
-debug: $(CLASSFILES)
-	jdb $(MAIN_FILE:.java=)
+	rm -f $(addprefix $(CLASSPATH),$(CLASSFILES))
+run: $(addprefix $(CLASSPATH),$(CLASSFILES))
+	java -classpath "$(addprefix $(PROJECTPATH),$(CLASSPATH))" $(ASSERT) $(MAIN_FILE:.java=) $(PARAMS)
+debug: $(addprefix $(CLASSPATH),$(CLASSFILES))
+	jdb -classpath $(CLASSPATH) -sourcepath $(SOURCEPATH) $(MAIN_FILE:.java=)
