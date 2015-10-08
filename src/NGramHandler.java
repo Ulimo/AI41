@@ -101,7 +101,8 @@ public class NGramHandler {
 		NGram toFind = new NGram(words, 0, 0);
 		
 		int[] interval = Search(toFind);
-		return MostProbable(interval[0], interval[1], PredictionCount);
+		int Predict = Math.min(PredictionCount, interval[1] - interval[0]);
+		return MostProbable(interval[0], interval[1], Predict);
 	}
 	
 	public void AddNGram(NGram gram)
