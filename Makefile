@@ -8,10 +8,9 @@
 CC = javac
 
 #Enter additional classpath folders (colon separated)
-PROJECTPATH = /home/joho/Documents/ai/proj/
 CLASSPATH = bin/
 SOURCEPATH = src/
-CFLAGS = -g -classpath "$(addprefix $(PROJECTPATH),$(SOURCEPATH))" -d $(addprefix $(PROJECTPATH), $(CLASSPATH))
+CFLAGS = -g -classpath "$(SOURCEPATH)" -d $(CLASSPATH)
 
 #source and class files
 MAIN_FILE = Main.java
@@ -38,6 +37,6 @@ $(CLASSPATH)%.class: $(addprefix $(SOURCEPATH),%.java)
 clean:
 	rm -f $(addprefix $(CLASSPATH),$(CLASSFILES))
 run: $(addprefix $(CLASSPATH),$(CLASSFILES))
-	java -classpath "$(addprefix $(PROJECTPATH),$(CLASSPATH))" $(ASSERT) $(MAIN_FILE:.java=) $(PARAMS)
+	java -classpath "$(CLASSPATH)" $(ASSERT) $(MAIN_FILE:.java=) $(PARAMS)
 debug: $(addprefix $(CLASSPATH),$(CLASSFILES))
 	jdb -classpath $(CLASSPATH) -sourcepath $(SOURCEPATH) $(MAIN_FILE:.java=)
