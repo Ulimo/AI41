@@ -29,12 +29,24 @@ public class NGrams {
 		sentance = sentance.toLowerCase();
 		String[] words = sentance.split("\\s+");
 
+		
+		int HighestGram = Math.min(words.length + 1, LargestNGramSize);
 		//Not yet implemented, should look at the last words up to the largest n-gram size (WordCount + 1)
-		for(int i = LargestNGramSize; i >= 1; i--)
+		for(int i = HighestGram; i >= 1; i--)
 		{
 			NGramHandler handler = handlers.get(i);
 			
-			LinkedList<NGram> grams = handler.getMostProbableGrams(words, PredictionCount);
+			int numberOfWordsToSend = i - 1;
+			
+			String[] wordsToSend = new String[numberOfWordsToSend];
+			
+			int startInSentence = words.length - numberOfWordsToSend;
+			for(int x = 0; x < numberOfWordsToSend; x++)
+			{
+				wordsToSend[x] = words[startInSentence + x];
+			}
+			
+			LinkedList<NGram> grams = handler.getMostProbableGrams(wordsToSend, PredictionCount);
 			if(grams != null && grams.size() > 0)
 			{
 				return grams;
