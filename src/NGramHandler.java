@@ -73,7 +73,7 @@ public class NGramHandler {
 		String[] tags = posModel.tag(wordsForGrammar);
 		double[] probs = posModel.probs();
 		
-		return false;
+		return true;
 	}
 
 	private NGram[] MostProbable(int start, final int end, final int size, String[] wordsForGrammar, POSTaggerME posModel) {
