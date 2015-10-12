@@ -40,7 +40,13 @@ public class Main {
 			
 			while(true){
 				System.out.println("\nGetting prediction for sentence: "+sentence);
-				NGram[] result = grams.GetPrediction(sentence, numOfPred, maxNgSize);
+				NGram[] result;
+				if(sentence.endsWith("*")){
+					result = grams.GetPrediction(sentence.substring(0, sentence.length()-1), numOfPred, maxNgSize);
+				}
+				else{
+					result = grams.GetPredictionNextWord(sentence, numOfPred, maxNgSize);
+				}
 				
 				for(int i=0; i<result.length; i++){
 					String currentWord = result[i].GetLastWord();
@@ -77,6 +83,19 @@ public class Main {
 				}
 				else{
 					//Add the chosen word
+					if(sentence.endsWith("*")){
+						int k=0;
+						for(int j=sentence.length()-1; j>=0; j--){
+							if(sentence.charAt(j)==' '){
+								k++;
+								break;
+							}
+							else{
+								k++;
+							}
+						}
+						sentence = sentence.substring(0, sentence.length()-k);
+					}
 					sentence += (" " + result[input].GetLastWord());
 				}
 			}
