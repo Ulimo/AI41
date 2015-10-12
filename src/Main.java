@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Scanner;
 
 import opennlp.tools.postag.POSModel;
 import opennlp.tools.postag.POSTaggerME;
@@ -19,60 +20,47 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+	
 		Path p = FileSystems.getDefault().getPath("model.arpa");
+		System.out.println("Creating datastructure for N-grams...");
+		NGrams grams = new NGrams(p, "en-pos-maxent.bin");
 		
-		NGrams grams = new NGrams(p);
+		System.out.println("Starting user interface...\n");
 		
-		NGram[] result = grams.GetPrediction("as well", 10, 5);
+		Scanner in = new Scanner(System.in);
 		
-		InputStream modelIn = null;
-		POSTaggerME tagger = null;
-		try {
-		  modelIn = new FileInputStream("en-pos-maxent.bin");
-		  POSModel model = new POSModel(modelIn);
-		  tagger = new POSTaggerME(model);
-		}
-		catch (IOException e) {
-		  // Model loading failed, handle the error
-		  e.printStackTrace();
-		}
-		finally {
-		  if (modelIn != null) {
-		    try {
-		    	
-		      modelIn.close();
-		    }
-		    catch (IOException e) {
-		    }
-		  }
-		}
-		
-		String[] sent = new String[]{"Most", "large", "cities", "in", "the", "US", "had",
-                "morning", "and", "afternoon", "newspapers", "."};
-		
-		String[] tags = tagger.tag(sent);
-		double[] probs = tagger.probs();
-		/*ArpaRead reader = new ArpaRead(p);
-		
-		HashMap<Integer, NGramHandler> grams = reader.GetNGrams();
-		
-		
-		Iterator<Entry<Integer, NGramHandler>> it = grams.entrySet().iterator();
-		
-		while(it.hasNext())
-		{
-			Entry<Integer, NGramHandler> entry = it.next();
+		while(true){
+			System.out.print("Write your sentence: ");
+			String sentence = in.nextLine();
 			
-			NGramHandler handler = entry.getValue();
-			if(handler != null)
-			{
-				handler.Sort();
+			while(true){
+				System.out.println("\nGetting prediction for sentence: "+sentence);
+				NGram[] result = grams.GetPrediction(sentence, 10, 5);
+				
+				System.out.println("Predictions: ");
+				for(int i=0; i<result.length; i++){
+					String currentWord = result[i].GetLastWord();
+					System.out.print(Integer.toString(i)+": "+currentWord+", ");
+				}
+				System.out.println("\nChoose a word (-1 if none was right)");
+				int input = in.nextInt();
+				if(input < 0 || input > result.length-1){
+					System.out.println("Write the correct word: ");
+					String word = in.next();
+					sentence += (" " + word);
+				}
+				else{
+					sentence += (" " + result[input].GetLastWord());
+				}
 			}
-		}*/
-		//grams.get(0).
-		//grams.get(2).
-		//System.err.println("hej");
+			
+			
+			//in.close();
+		}		
+		
+		
+		//NGram[] result = grams.GetPrediction("as well", 10, 5);
+
 	}
 
 }
