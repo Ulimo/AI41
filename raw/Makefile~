@@ -1,4 +1,0 @@
-CORPUS=PhilosophicalStudies.txt
-
-all:
-	java -cp kylm.jar ../lib/kylm-0.0.7.main.CountNgrams $(CORPUS) model.arpa
