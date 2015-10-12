@@ -59,7 +59,7 @@ public class NGrams {
 	
 	public NGram[] GetPrediction(String sentance, int PredictionCount, int MaxNgramSize)
 	{
-		sentance = sentance.toLowerCase();
+		//sentance = sentance.toLowerCase();
 		String[] words = sentance.split("\\s+");
 
 		
@@ -86,19 +86,48 @@ public class NGrams {
 				wordsToSend[x] = words[startInSentence + x];
 			}
 			
-			NGram[] grams = handler.getMostProbableGrams(wordsForGrammar, wordsToSend, PredictionCount, tagger);
+			NGram[] grams = Cleanup(handler.getMostProbableGrams(wordsForGrammar, wordsToSend, PredictionCount, tagger));
 			if(grams != null && grams.length > 0)
 			{
+				//Cleanup
+				
 				return grams;
 			}
 		}
 		
 		
-		//Grammar checks?
+		
+		
+		
 		
 		
 		
 		return null;	
+	}
+	
+	private NGram[] Cleanup(NGram[] arr)
+	{
+		int nonNull = 0;
+		
+		for(int i = 0; i < arr.length; i++)
+		{
+			if(arr[i] != null)
+			{
+				nonNull++;
+			}
+		}
+		
+		NGram[] cleanedArr = new NGram[nonNull];
+		
+		for(int i = 0, z = 0; i < arr.length; i++)
+		{
+			if(arr[i] != null)
+			{
+				cleanedArr[z++] = arr[i];
+			}
+			
+		}
+		return cleanedArr;
 	}
 	
 	
