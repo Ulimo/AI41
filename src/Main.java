@@ -26,10 +26,10 @@ public class Main {
 		NGrams grams = new NGrams(p, "en-pos-maxent.bin");
 		
 		System.out.println("Starting user interface...\n");
-		
-		Scanner in = new Scanner(System.in);
+		Scanner in;
 		
 		while(true){
+			in = new Scanner(System.in);
 			System.out.print("Write your sentence: ");
 			String sentence = in.nextLine();
 			
@@ -37,26 +37,35 @@ public class Main {
 				System.out.println("\nGetting prediction for sentence: "+sentence);
 				NGram[] result = grams.GetPrediction(sentence, 10, 5);
 				
-				System.out.println("Predictions: ");
 				for(int i=0; i<result.length; i++){
 					String currentWord = result[i].GetLastWord();
-					System.out.print(Integer.toString(i)+": "+currentWord+", ");
+					System.out.print(Integer.toString(i)+":"+currentWord+"  ");
 				}
-				System.out.println("\nChoose a word (-1 if none was right)");
+				System.out.println("\nChoose a word (-1 if other word, -2 to restart, -3 to exit program)");
 				int input = in.nextInt();
-				if(input < 0 || input > result.length-1){
+				
+				if(input == -1 || input < 3  || input > result.length-1){
+					//Enter a new word and add it
 					System.out.println("Write the correct word: ");
 					String word = in.next();
 					sentence += (" " + word);
 				}
+				else if(input == -2){
+					//Restart
+					System.out.println("Restarting with a new sentence...\n");
+					break;
+				}
+				else if(input == -3){
+					//Exit program
+					in.close();
+					System.exit(0);
+				}
 				else{
+					//Add the chosen word
 					sentence += (" " + result[input].GetLastWord());
 				}
 			}
-			
-			
-			//in.close();
-		}		
+		}
 		
 		
 		//NGram[] result = grams.GetPrediction("as well", 10, 5);
