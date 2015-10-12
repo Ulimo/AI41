@@ -6,19 +6,48 @@ public class Grammar {
 	boolean returnValue = true;	
 		
 	returnValue = returnValue & verbsInSuccession(sentence, tags, probs);
-	returnValue = returnValue & CheckProbabilities(sentence, tags, probs);
+	//returnValue = returnValue & CheckProbabilities(sentence, tags, probs);
 	returnValue = returnValue & CheckSVO(sentence, tags, probs);
+	returnValue = returnValue & CheckRepeat(sentence, tags, probs);
+	returnValue = returnValue & RemoveEndLine(sentence, tags, probs);
+	returnValue = returnValue & MyHimHerIts(sentence, tags, probs);
 	returnValue = returnValue & compoundInSuccession(sentence, tags, probs);
 	
  return returnValue;
 }
 	
+	private static boolean RemoveEndLine(String[] sentence, String[] tags, double[] probs)
+	{
+		if(sentence[sentence.length - 1].equals("</s>"))
+			return false;
+		
+		return true;
+	}
+	
+	private static boolean CheckRepeat(String[] sentence, String[] tags, double[] probs)
+	{
+		
+		if(sentence.length >= 2)
+			if(sentence[sentence.length - 2].equals(sentence[sentence.length - 1]))
+				return false;
+		
+		return true;
+	}
+	
+	public static boolean MyHimHerIts(String[] sentence, String[] tags, double[] probs)
+	{
+		if(tags[tags.length - 2].equals("PRP$") && !tags[tags.length - 1].startsWith("JJ") && !tags[tags.length - 1].startsWith("NN"))
+			return false;
+		return true;
+	}
+	
 	private static boolean CheckSVO(String[] sentence, String[] tags, double[] probs)
 	{
-		//if(sentence.length > 2)
-		//	return true;
+		if(sentence.length > 2)
+			return true;
 		
-		if(tags[tags.length - 2].equals("PRP") && (tags[tags.length - 1].charAt(0) != 'V' && !tags[tags.length - 1].equals("TO") && !tags[tags.length - 1].equals("MD") && !tags[tags.length - 1].equals("RB") && !tags[tags.length - 1].equals("CC")))
+		//!tags[tags.length - 1].equals("TO")
+		if(tags[tags.length - 2].equals("PRP") && (tags[tags.length - 1].charAt(0) != 'V' && !tags[tags.length - 1].equals("MD") && !tags[tags.length - 1].equals("RB") && !tags[tags.length - 1].equals("CC")))
 			return false;
 		
 		return true;
@@ -26,10 +55,10 @@ public class Grammar {
 	
 	private static boolean CheckProbabilities(String[] sentence, String[] tags, double[] probs)
 	{
-		//if(probs[probs.length - 1] < 0.3)
-		//	return false;
+	if(probs[probs.length - 1] < 0.1)
+			return false;
 		if(probs.length > 2)
-			if(probs[probs.length - 2] < 0.3)
+			if(probs[probs.length - 2] < 0.1)
 				return false;
 		return true;
 	}
