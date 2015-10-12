@@ -19,4 +19,16 @@ public class Grammar {
 		
 		return true;
 	}
+	
+	private static boolean hasCompound(String[] sentence, String[] tags){
+		
+		for(int i=0;i < tags.length; i++){
+			
+			if(tags[i].charAt(0) == 'C' && tags[i].charAt(1) == 'C' ){
+				return true;			
+			}
+		}	
+		return false;
+	}
+	
 }
