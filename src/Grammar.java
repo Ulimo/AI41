@@ -8,6 +8,7 @@ public class Grammar {
 	returnValue = returnValue & verbsInSuccession(sentence, tags, probs);
 	returnValue = returnValue & CheckProbabilities(sentence, tags, probs);
 	returnValue = returnValue & CheckSVO(sentence, tags, probs);
+	returnValue = returnValue & compoundInSuccession(sentence, tags, probs);
 	
  return returnValue;
 }
