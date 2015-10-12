@@ -41,6 +41,15 @@ public class Grammar {
 		return true;
 	}
 	
+	private static boolean compoundInSuccession(String[] sentance, String[] tags, double[] probs){
+		
+		if((tags[tags.length -1].charAt(0) == 'C' && tags[tags.length - 1].charAt(1) == 'C') && 
+				(tags[tags.length -2].charAt(0) == 'C' && tags[tags.length - 2].charAt(1) == 'C')){
+			return false;
+		}
+		return true;
+	}
+	
 	private static boolean hasCompound(String[] sentence, String[] tags){
 		
 		for(int i=0;i < tags.length; i++){
