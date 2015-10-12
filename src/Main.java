@@ -35,7 +35,7 @@ public class Main {
 			
 			while(true){
 				System.out.println("\nGetting prediction for sentence: "+sentence);
-				NGram[] result = grams.GetPrediction(sentence, 10, 5);
+				NGram[] result = grams.GetPredictionNextWord(sentence, 10, 5);
 				
 				for(int i=0; i<result.length; i++){
 					String currentWord = result[i].GetLastWord();

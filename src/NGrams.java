@@ -2,6 +2,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -62,6 +63,75 @@ public class NGrams {
 		//sentance = sentance.toLowerCase();
 		String[] words = sentance.split("\\s+");
 
+		ArrayList<NGram> outList = new ArrayList<>();
+		
+		String[] wordsForGrammar = new String[words.length + 1];
+		
+		for(int i = 0; i < words.length; i++)
+		{
+			wordsForGrammar[i] = words[i];
+		}
+		
+		int HighestGram = Math.min(MaxNgramSize, Math.min(words.length, LargestNGramSize));
+		//Not yet implemented, should look at the last words up to the largest n-gram size (WordCount + 1)
+		for(int i = HighestGram; i >= 1; i--)
+		{
+			NGramHandler handler = handlers.get(i);
+			
+			int numberOfWordsToSend = i;// - 1;
+			
+			String[] wordsToSend = new String[numberOfWordsToSend];
+			
+			int startInSentence = words.length - numberOfWordsToSend;
+			for(int x = 0; x < numberOfWordsToSend; x++)
+			{
+				wordsToSend[x] = words[startInSentence + x];
+			}
+			
+			NGram[] grams = Cleanup(handler.getMostProbableGrams(wordsForGrammar, wordsToSend, PredictionCount, tagger));
+			if(grams != null && grams.length > 0)
+			{
+				//Cleanup
+				for(int x = 0; x < grams.length; x++)
+				{
+					if(outList.size() == PredictionCount)
+						return ReturnArray(outList);
+					
+					AddToList(outList, grams[x]);
+					//outList.add(grams[x]);
+				}
+				if(outList.size() < PredictionCount)
+					continue;
+				
+				return ReturnArray(outList);
+			}
+		}
+		return ReturnArray(outList);	
+	}
+	
+	private void AddToList(ArrayList<NGram> list, NGram toAdd)
+	{
+		for(int i = 0; i < list.size(); i++)
+		{
+			if(list.get(i).GetLastWord().equals(toAdd.GetLastWord()))
+				return;
+		}
+		list.add(toAdd);
+	}
+	
+	private NGram[] ReturnArray(ArrayList<NGram> list)
+	{
+		NGram[] arr = new NGram[list.size()];
+		
+		return list.toArray(arr);
+	}
+	
+	public NGram[] GetPredictionNextWord(String sentance, int PredictionCount, int MaxNgramSize)
+	{
+		//sentance = sentance.toLowerCase();
+		String[] words = sentance.split("\\s+");
+
+		ArrayList<NGram> outList = new ArrayList<>();
 		
 		String[] wordsForGrammar = new String[words.length + 1];
 		
@@ -90,19 +160,22 @@ public class NGrams {
 			if(grams != null && grams.length > 0)
 			{
 				//Cleanup
+				for(int x = 0; x < grams.length; x++)
+				{
+					if(outList.size() == PredictionCount)
+						return ReturnArray(outList);
+					
+					AddToList(outList, grams[x]);
+					//outList.add(grams[x]);
+				}
 				
-				return grams;
+				if(outList.size() < PredictionCount)
+					continue;
+				
+				return ReturnArray(outList);
 			}
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		return null;	
+		return ReturnArray(outList);	
 	}
 	
 	private NGram[] Cleanup(NGram[] arr)
