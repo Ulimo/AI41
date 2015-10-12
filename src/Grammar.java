@@ -11,6 +11,7 @@ public class Grammar {
 	returnValue = returnValue & CheckRepeat(sentence, tags, probs);
 	returnValue = returnValue & RemoveEndLine(sentence, tags, probs);
 	returnValue = returnValue & MyHimHerIts(sentence, tags, probs);
+	returnValue = returnValue & compoundInSuccession(sentence, tags, probs);
 	
  return returnValue;
 }
