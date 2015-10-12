@@ -44,7 +44,7 @@ public class Main {
 				System.out.println("\nChoose a word (-1 if other word, -2 to restart, -3 to exit program)");
 				int input = in.nextInt();
 				
-				if(input == -1 || input < 3  || input > result.length-1){
+				if(input == -1 || input < -3  || input > result.length-1){
 					//Enter a new word and add it
 					System.out.println("Write the correct word: ");
 					String word = in.next();
