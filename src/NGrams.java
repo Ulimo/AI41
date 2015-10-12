@@ -1,18 +1,51 @@
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map.Entry;
 
+import opennlp.tools.postag.POSModel;
+import opennlp.tools.postag.POSTaggerME;
+
 public class NGrams {
 	
 	HashMap<Integer, NGramHandler> handlers;
 	
 	private int LargestNGramSize;
+	
+	private POSTaggerME tagger = null;
 
-	public NGrams(Path pathToCorpus)
+	public NGrams(Path pathToCorpus, String PathToPOS)
 	{
 		ReadTrainingData(pathToCorpus);
+		CreatePosModel(PathToPOS);
+	}
+	
+	private void CreatePosModel(String PathToPOS)
+	{
+		InputStream modelIn = null;
+		try {
+		  modelIn = new FileInputStream(PathToPOS);
+		  POSModel model = new POSModel(modelIn);
+		  tagger = new POSTaggerME(model);
+		}
+		catch (IOException e) {
+		  // Model loading failed, handle the error
+		  e.printStackTrace();
+		}
+		finally {
+		  if (modelIn != null) {
+		    try {
+		    	
+		      modelIn.close();
+		    }
+		    catch (IOException e) {
+		    }
+		  }
+		}
 	}
 	
 	private void ReadTrainingData(Path p)
@@ -30,6 +63,13 @@ public class NGrams {
 		String[] words = sentance.split("\\s+");
 
 		
+		String[] wordsForGrammar = new String[words.length + 1];
+		
+		for(int i = 0; i < words.length; i++)
+		{
+			wordsForGrammar[i] = words[i];
+		}
+		
 		int HighestGram = Math.min(MaxNgramSize, Math.min(words.length + 1, LargestNGramSize));
 		//Not yet implemented, should look at the last words up to the largest n-gram size (WordCount + 1)
 		for(int i = HighestGram; i >= 1; i--)
@@ -46,7 +86,7 @@ public class NGrams {
 				wordsToSend[x] = words[startInSentence + x];
 			}
 			
-			NGram[] grams = handler.getMostProbableGrams(wordsToSend, PredictionCount);
+			NGram[] grams = handler.getMostProbableGrams(wordsForGrammar, wordsToSend, PredictionCount, tagger);
 			if(grams != null && grams.length > 0)
 			{
 				return grams;

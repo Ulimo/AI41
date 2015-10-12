@@ -17,6 +17,11 @@ public class NGram implements Comparable<NGram> {
 		return Words.length;
 	}
 	
+	public String GetLastWord()
+	{
+		return Words[Words.length - 1];
+	}
+	
 	public String[] GetWords()
 	{
 		return Words;
