@@ -65,7 +65,7 @@ public class NGramHandler {
 
 	private NGram[] MostProbable(int start, final int end, final int size) {
 		assert start >= 0;
-		assert end > 0;
+		assert end > start;
 		assert end-start >= size;
 
 		NGram[] res = new NGram[size];
@@ -86,6 +86,7 @@ public class NGramHandler {
 							res[j] = res[j-1];
 						}
 						res[i] = grams[start];
+						break;
 					}
 				}
 			}
@@ -93,7 +94,7 @@ public class NGramHandler {
 		for(int i=0; i<size; ++i) {
 			assert res[i] != null;
 			if (i< size-1) {
-				assert res[i].GetProbability() > res[i+1].GetProbability();
+				assert res[i].GetProbability() >= res[i+1].GetProbability();
 			}
 		}
 		return res;
