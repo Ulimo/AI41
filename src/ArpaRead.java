@@ -50,7 +50,8 @@ public class ArpaRead {
 			
 			int numberOfGrams = grams.get(nGramSize).GetNumberOfGrams();
 			LineNumber++;
-			for(; LineNumber < (LineNumber + numberOfGrams) && LineNumber < lines.size() && lines.get(LineNumber).indexOf('\\') == -1; LineNumber++)
+			int endCond = LineNumber + numberOfGrams;
+			for(; LineNumber < endCond && LineNumber < lines.size(); LineNumber++) //lines.get(LineNumber).indexOf('\\') == -1
 			{
 				String current = lines.get(LineNumber);
 				String[] splitted = current.split("\\s+");
