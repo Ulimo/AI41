@@ -86,10 +86,10 @@ public class NGramHandler {
 		for ( ; start < end ; ++start ) {
 			
 			//Grammar stuff here
-			if(!SendToGrammarCheck(wordsForGrammar, grams[start], posModel))
-			{
-				continue;
-			}
+			//if(!SendToGrammarCheck(wordsForGrammar, grams[start], posModel))
+			//{
+			//	continue;
+			//}
 			
 			for ( int i=0 ; i<size ; ++i ) {
 				if(res[i]==null) {
