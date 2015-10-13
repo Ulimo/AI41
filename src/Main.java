@@ -20,7 +20,7 @@ public class Main {
 
 	public static void main(String[] args) {
 	
-		Path p = FileSystems.getDefault().getPath("model.arpa");
+		Path p = FileSystems.getDefault().getPath("kn.model.arpa");
 		System.out.println("Creating datastructure for N-grams...");
 		NGrams grams = new NGrams(p, "en-pos-maxent.bin");
 		
