@@ -1,0 +1,11 @@
+\select@language {english}
+\contentsline {paragraph}{Abstract}{1}
+\contentsline {section}{\numberline {1}Method}{1}
+\contentsline {subsection}{\numberline {1.1}Implementation}{3}
+\contentsline {subsection}{\numberline {1.2}Evaluation}{3}
+\contentsline {section}{\numberline {2}Results and analysis}{4}
+\contentsline {subsection}{\numberline {2.1}Smoothing-techniques}{4}
+\contentsline {subsection}{\numberline {2.2}Gramar constraints}{5}
+\contentsline {subsection}{\numberline {2.3}Context recognition}{5}
+\contentsline {section}{\numberline {3}Discussion}{6}
+\contentsline {section}{\numberline {4}Future work}{7}
