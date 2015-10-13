@@ -58,10 +58,43 @@ public class NGrams {
 		SortHandlers();
 	}
 	
+	private String[] findSubjectChangeIt(String[] words)
+	{
+		String[] tags = tagger.tag(words);
+		int indexOfIt=-1;
+		for(int i=words.length-1; i>=0 && ((words.length-1)-i)<LargestNGramSize; i--){
+			if(words[i].equals("it") || words[i].equals("It")){
+				indexOfIt=i;
+			}
+		}
+		if(indexOfIt==-1){
+			return words;
+		}
+		for(int j=0; j<words.length-1; j++){
+			if(tags[j].startsWith("NN")){
+				words[indexOfIt] = words[j];
+				if(j>0 && tags[j-1].startsWith("PRP")){
+					String[] tmpWords = new String[words.length+1];
+					for(int wordsi=0, tmpi=0; wordsi<words.length; wordsi++, tmpi++){
+						if(wordsi==(indexOfIt)){
+							tmpWords[tmpi] = words[j-1];
+							tmpi++;
+						}
+						tmpWords[tmpi] = words[wordsi];
+					}
+					words = tmpWords;
+				}
+			}
+		}
+		return words;
+	}
+	
 	public NGram[] GetPrediction(String sentance, int PredictionCount, int MaxNgramSize)
 	{
 		//sentance = sentance.toLowerCase();
 		String[] words = sentance.split("\\s+");
+		
+		words = findSubjectChangeIt(words);
 
 		ArrayList<NGram> outList = new ArrayList<>();
 		
@@ -130,6 +163,8 @@ public class NGrams {
 	{
 		//sentance = sentance.toLowerCase();
 		String[] words = sentance.split("\\s+");
+		
+		words = findSubjectChangeIt(words);
 
 		ArrayList<NGram> outList = new ArrayList<>();
 		
