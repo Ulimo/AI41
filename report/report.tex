@@ -1,0 +1,69 @@
+\documentclass[a4paper, 12pt]{article}
+
+%\usepackage[swedish]{babel}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+\fancyhf{} %clears default header and footer
+\lhead{DD2380 Artificial Intelligence}
+\rhead{Proj. report gr. 41}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+\pagestyle{fancy}
+\usepackage{lastpage}
+\usepackage{lipsum}
+%\usepackage{natbib}
+%\usepackage{amsmath}
+
+
+\begin{document}
+\begin{titlepage}
+\begin{center}
+{\Huge \noindent Royal Institute of Technology KTH}
+\vspace{15pt}\ 
+{\huge \noindent DD2380 Artificial Intelligence}
+\vspace{3cm}
+\hrule
+\vspace{15pt}
+{\Huge Word predictor functionality: an evaluation study}
+\vspace{15pt}
+\hrule
+\vspace{1cm}
+{\Large\today\\}
+\vspace{1em}
+{\slshape Jonathan Kindfält, Johannes Olsson,
+\\*Mikael Sjöberg, Alexander Östman}
+\end{center}
+\vspace{1cm}
+\paragraph{Abstract}
+\lipsum[1]
+
+\end{titlepage}
+
+\section*{Introduction}
+This is just a sentence to make a reference to \cite{frey}. Without it, there is no bibliography section.
+
+\tableofcontents
+
+\section{Method}
+\lipsum[3-9]
+\subsection{Implementation}
+\lipsum[1]
+\subsection{Evaluation}
+\lipsum[1]
+\section{Results and analysis}
+\lipsum[2-3]
+\subsection{Smoothing-techniques}
+\lipsum[2-3]
+\subsection{Gramar constraints}
+\lipsum[2-3]
+\subsection{Context recognition}
+\lipsum[2-3]
+\section{Discussion}
+\lipsum[3-9]
+\section{Future work}
+\lipsum[3-9]
+\bibliographystyle{ieeetr}
+\bibliography{sources}
+
+\end{document}

@@ -1,4 +1,5 @@
 CORPUS=CombinedCorpus.txt
+LCCORPUS=CombinedCorpusLowercase.txt
 
 all:
 	make kn
@@ -11,3 +12,6 @@ abs:
 	java -cp ../lib/kylm-0.0.7.jar kylm.main.CountNgrams $(CORPUS) ../abs.model.arpa -abs -n 4
 ml:
 	java -cp ../lib/kylm-0.0.7.jar kylm.main.CountNgrams $(CORPUS) ../ml.model.arpa -ml -n 4
+	
+lowercasekn: 
+	java -cp ../lib/kylm-0.0.7.jar kylm.main.CountNgrams $(LCCORPUS) ../kn.model.lowercase.arpa -kn -n 4
