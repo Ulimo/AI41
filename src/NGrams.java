@@ -73,7 +73,7 @@ public class NGrams {
 		for(int j=0; j<words.length-1; j++){
 			if(tags[j].startsWith("NN")){
 				words[indexOfIt] = words[j];
-				if(j>0 && tags[j-1].startsWith("PRP")){
+				if(j>0 && (tags[j-1].startsWith("PRP") || tags[j -1 ].startsWith("DT"))){ // 
 					String[] tmpWords = new String[words.length+1];
 					for(int wordsi=0, tmpi=0; wordsi<words.length; wordsi++, tmpi++){
 						if(wordsi==(indexOfIt)){

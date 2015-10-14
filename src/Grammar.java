@@ -10,7 +10,7 @@ public class Grammar {
 	returnValue = returnValue & CheckSVO(sentence, tags, probs);
 	returnValue = returnValue & CheckRepeat(sentence, tags, probs);
 	returnValue = returnValue & RemoveEndLine(sentence, tags, probs);
-	returnValue = returnValue & MyHimHerIts(sentence, tags, probs);
+	//returnValue = returnValue & MyHimHerIts(sentence, tags, probs);
 	returnValue = returnValue & compoundInSuccession(sentence, tags, probs);
 	
  return returnValue;
