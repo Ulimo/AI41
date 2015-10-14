@@ -1,6 +1,7 @@
 FILENAME = report
 pdf:
 	latex $(FILENAME).tex
+	latex $(FILENAME).tex
 	pdflatex $(FILENAME).tex
 bib:
 	latex $(FILENAME).tex

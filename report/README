@@ -1,0 +1,11 @@
+---- FILER ----
+report.tex		huvuddokumentet
+style.sty 		packages som används hämtas från denna fil
+sources.bib		här läggs alla referenser
+Makefile		anropas för att generera PDF:en
+
+---- KATALOGER ----
+./tex/			här läggs alla text som sedan inkluderas i huvuddokumentet
+./img/			här läggs alla bilder
+
+Tänk på att en fil som ligger i ./tex/ som använder bilder måste specificera att bilden ligger i ../img/.
