@@ -4,17 +4,26 @@
 \lipsum[1]
 \vspace{1em}
 \begin{table}[ht]
+
 \centering
-\begin{tabular}{ |p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}| }
+{\footnotesize
+\begin{tabular}{ |p{0.5\textwidth}|c|c|c|c| }
 	\hline
-	\multicolumn{5}{|c|}{Kneser-Ney} \\
+	\multicolumn{5}{|c|}{Null smoothing technique} \\
 	\hline
-	1 & 2 & 3 & 4 & 5 \\
+	\multicolumn{1}{|c|}{Test sentence} & Grammar & Context & Both & None \\
 	\hline
-	1 & 2 & 3 & 4 & 5 \\
+	Null sentence & 0 & 0 & 0 & 0 \\
+	\hline
+	Null sentence & 0 & 0 & 0 & 0 \\
+	\hline
+	Null sentence & 0 & 0 & 0 & 0 \\
+	\hline
+	Null sentence & 0 & 0 & 0 & 0 \\
 	\hline
 \end{tabular}
-\caption{some caption}
+}
+\caption{Null caption}
 \end{table}
 \vspace{1em}
 \lipsum[1]

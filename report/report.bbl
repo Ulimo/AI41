@@ -1,7 +1,14 @@
 \begin{thebibliography}{1}
 
-\bibitem{frey}
-C.~B. Frey and M.~A. Osborne, ``The future of employment: How susceptible are
-  jobs to computerisation?,'' {\em Unknown journal}, vol.~Unknown volume, 2013.
+\bibitem{keystrokes}
+K.~Trnka, D.~Yarrington, and K.~Mccoy, ``The keystroke savings limit in word
+  prediction for aac,'' tech. rep., 2005.
+
+\bibitem{smoothing}
+D.~Hiemstra, L.~Liu, and M.~T. Özsu, ``Probability smoothing,'' {\em
+  Encyclopedia of database systems}, vol.~2169, 2009.
+
+\bibitem{corpus}
+K.~Trnka and K.~F. McCoy, ``Corpus studies in word prediction,'' 2007.
 
 \end{thebibliography}

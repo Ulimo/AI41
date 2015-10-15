@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.8)  14 OCT 2015 22:42
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.8)  15 OCT 2015 12:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -268,13 +268,10 @@ Now handling font encoding U ...
 \f@ncyO@olf=\skip50
 \f@ncyO@orf=\skip51
 )
-(/usr/share/texlive/texmf-dist/tex/latex/lastpage/lastpage.sty
-Package: lastpage 2013/01/28 v1.2l Refers to last page's name (HMM; JPG)
-)
 (/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.sty
 Package: lipsum 2011/04/14 v1.2 150 paragraphs of Lorem Ipsum dummy text
 \c@lips@count=\count88
-))
+)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -307,7 +304,15 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
 )
-(./report.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+\epsfxsize=\dimen106
+\epsfysize=\dimen107
+)) (./report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
@@ -322,23 +327,17 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
 LaTeX Font Info:    ... okay on input line 4.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
 LaTeX Font Info:    ... okay on input line 4.
-Package lastpage Info: Please have a look at the pageslts package at
-(lastpage)             http://www.ctan.org/tex-archive/ 
-(lastpage)             macros/latex/contrib/pageslts/ 
-(lastpage)             or
-(lastpage)             http://www.ctan.org/tex-archive/ 
-(lastpage)             install/macros/latex/contrib/pageslts.tds.zip
-(lastpage)             ! on input line 4.
- (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count90
-\scratchdimen=\dimen106
+\scratchdimen=\dimen108
 \scratchbox=\box26
 \nofMPsegments=\count91
 \nofMParguments=\count92
 \everyMPshowfont=\toks17
 \MPscratchCnt=\count93
-\MPscratchDim=\dimen107
+\MPscratchDim=\dimen109
 \MPnumerator=\count94
 \makeMPintoPDFobject=\count95
 \everyMPtoPDFconversion=\toks18
@@ -390,69 +389,106 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-(./tex/titlepage.tex [1
+(./tex/titlepage.tex
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 1.
+ <./img/turing.jpg, id=1, 42.75975pt x 53.4798pt>
+File: ./img/turing.jpg Graphic file (type jpg)
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}])
-(./report.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 6.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 6.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 6.
-)
-\tf@toc=\write3
-\openout3 = `report.toc'.
+<use ./img/turing.jpg>
+Package pdftex.def Info: ./img/turing.jpg used on input line 1.
+(pdftex.def)             Requested size: 50.7019pt x 63.4157pt.
+File: ./img/turing.jpg Graphic file (type jpg)
+ <use ./img/turing.jpg>
+Package pdftex.def Info: ./img/turing.jpg used on input line 1.
+(pdftex.def)             Requested size: 50.7019pt x 63.4157pt.
+File: ./img/turing.jpg Graphic file (type jpg)
+ <use ./img/turing.jpg>
+Package pdftex.def Info: ./img/turing.jpg used on input line 1.
+(pdftex.def)             Requested size: 50.7019pt x 63.4157pt.
+File: ./img/turing.jpg Graphic file (type jpg)
 
- (./tex/introduction.tex
+<use ./img/turing.jpg>
+Package pdftex.def Info: ./img/turing.jpg used on input line 1.
+(pdftex.def)             Requested size: 50.7019pt x 63.4157pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (15.0pt): 
+ Make it at least 15.34767pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+ <./img/turing.jpg>])
+(./tex/introduction.tex
 Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
  []
 
-) (./tex/related.tex [1]) (./tex/method.tex
+[2
+
+]) (./tex/related.tex) (./tex/method.tex
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 4.
+
 Underfull \hbox (badness 10000) in paragraph at lines 4--5
 
  []
 
-
+[3]
 Underfull \hbox (badness 10000) in paragraph at lines 6--7
 
  []
 
-[2]
+
 Overfull \hbox (5.31395pt too wide) in paragraph at lines 8--9
 []\OT1/cmr/m/n/12 In a keystroke count ex-per-i-ment, for a given word, the num
 -ber of keystrokes
  []
 
-<img/experiment_diagram.png, id=16, 753.81625pt x 722.7pt>
+<img/experiment_diagram.png, id=19, 753.81625pt x 722.7pt>
 File: img/experiment_diagram.png Graphic file (type png)
 
 <use img/experiment_diagram.png>
 Package pdftex.def Info: img/experiment_diagram.png used on input line 14.
 (pdftex.def)             Requested size: 272.99881pt x 261.72667pt.
-) (./tex/results.tex [3 <./img/experiment_diagram.png>] [4] [5]) (./tex/discuss
-ion.tex [6] [7] [8]) (./tex/summary.tex
-[9]) (./report.bbl) 
-AED: lastpage setting LastPage
-[10] (./report.aux) ) 
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[4]) (./tex/results.tex [5 <./img/experiment_diagram.png>] [6] [7])
+(./tex/discussion.tex [8] [9] [10]) (./tex/summary.tex [11]) (./report.bbl)
+(./tex/resources.tex) [12] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 2472 strings out of 493304
- 32751 string characters out of 6139871
- 190297 words of memory out of 5000000
- 5868 multiletter control sequences out of 15000+600000
- 8892 words of font info for 31 fonts, out of 8000000 for 9000
+ 2555 strings out of 493304
+ 33637 string characters out of 6139871
+ 190306 words of memory out of 5000000
+ 5945 multiletter control sequences out of 15000+600000
+ 9931 words of font info for 35 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 37i,11n,45p,659b,247s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on report.pdf (11 pages, 131137 bytes).
+ 37i,16n,45p,734b,445s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on report.pdf (12 pages, 205253 bytes).
 PDF statistics:
- 63 PDF objects out of 1000 (max. 8388607)
- 42 compressed objects within 1 object stream
+ 83 PDF objects out of 1000 (max. 8388607)
+ 56 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
