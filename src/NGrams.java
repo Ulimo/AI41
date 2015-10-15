@@ -62,7 +62,7 @@ public class NGrams {
 	{
 		String[] tags = tagger.tag(words);
 		int indexOfIt=-1;
-		for(int i=words.length-1; i>=0 && ((words.length-1)-i)<LargestNGramSize; i--){
+		for(int i=words.length-2; i>=0 && ((words.length-2)-i)<LargestNGramSize; i--){
 			if(words[i].equals("it") || words[i].equals("It")){
 				indexOfIt=i;
 			}
@@ -84,6 +84,7 @@ public class NGrams {
 					}
 					words = tmpWords;
 				}
+				break;
 			}
 		}
 		return words;
@@ -94,15 +95,16 @@ public class NGrams {
 		//sentance = sentance.toLowerCase();
 		String[] words = sentance.split("\\s+");
 		
+		String[] wordclones = words.clone();
 		words = findSubjectChangeIt(words);
-
+		//ArrayToLowercase(words);
 		ArrayList<NGram> outList = new ArrayList<>();
 		
-		String[] wordsForGrammar = new String[words.length + 1];
+		String[] wordsForGrammar = new String[wordclones.length + 1];
 		
-		for(int i = 0; i < words.length; i++)
+		for(int i = 0; i < wordclones.length; i++)
 		{
-			wordsForGrammar[i] = words[i];
+			wordsForGrammar[i] = wordclones[i];
 		}
 		
 		int HighestGram = Math.min(MaxNgramSize, Math.min(words.length, LargestNGramSize));
@@ -142,6 +144,14 @@ public class NGrams {
 		return ReturnArray(outList);	
 	}
 	
+	private void ArrayToLowercase(String[] stringArray)
+	{
+		for(int i = 0; i < stringArray.length; i++)
+		{
+			stringArray[i] = stringArray[i].toLowerCase();
+		}
+	}
+	
 	private void AddToList(ArrayList<NGram> list, NGram toAdd)
 	{
 		for(int i = 0; i < list.size(); i++)
@@ -164,15 +174,16 @@ public class NGrams {
 		//sentance = sentance.toLowerCase();
 		String[] words = sentance.split("\\s+");
 		
+		String[] wordclones = words.clone();
 		words = findSubjectChangeIt(words);
-
+		//ArrayToLowercase(words);
 		ArrayList<NGram> outList = new ArrayList<>();
 		
-		String[] wordsForGrammar = new String[words.length + 1];
+		String[] wordsForGrammar = new String[wordclones.length + 1];
 		
-		for(int i = 0; i < words.length; i++)
+		for(int i = 0; i < wordclones.length; i++)
 		{
-			wordsForGrammar[i] = words[i];
+			wordsForGrammar[i] = wordclones[i];
 		}
 		
 		int HighestGram = Math.min(MaxNgramSize, Math.min(words.length + 1, LargestNGramSize));

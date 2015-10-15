@@ -1,14 +1,19 @@
 \section{Introduction}
-This study was initiated by doing research to gather the knowledge required to understand the basis of how word predictors work. The know-how to be able to implement and evaluate such a program was also needed. From the research, we were able to formulate the hypotheses mentioned above, as well as a project plan for implementing a word predictor that we could test to find support or disproof of our hypotheses.\\
+Word prediction is an important part in Natural Language Processing (NLP) since in many tasks it is necessary to determine the next word [1].  Predicting words correctly can be a difficult task since there are a lot of factors that have to be taken into account. Grammar constraints and context of the input are often complex matters which need to be analyzed in order to make accurate predictions.
+ 
+Gregory W. Lesher et.al[2] show that the performance has been seen to rely on training text size. It is mentioned in the report that the performance of a word predictor could be improved with syntax-based prediction which should be investigated.
+ 
+One goal of word predictors is to be able to give accurate results to sentences in different contexts [1]. This requires a way for the word predictor to recognize the context in the sentence.
+ 
+Both syntax-based prediction (grammatical analysis) and context recognition require to be implemented along with a model. This work uses N-gram modelling since it is a common tool in NLP [3]. A problem with N-gram moddeling is that it uses training data which makes it possible that not all combinations of words occur, which requires a smoothing technique to give unseen N-grams some probability [4]. Smoothing techniques are a requirement for word prediction to be usable for different sentences than those in the training data.
+ 
+Combining  these techniques together: smoothing, grammatical rules and context recognition, is the problem this report focuses on, and how they can improve a word predictors' performance.
 
-For the implementation, an object oriented approach was taken. The language of choice was initially C++. As research went on, however, most libraries that could be used seemed to be written in Java. The programming language was therefore changed to the latter.
+Random citations (to be removed): \cite{keystrokes}\cite{smoothing}\cite{corpus}\cite{aurora}
 
-*TBA: what were we supposed to implement, i.e. list of requirements (for grades)*
-\cite{keystrokes}
-\cite{smoothing}
-\cite{corpus}
 
-\subsection{Contribution to the field}
-\lipsum[1]
+\subsection{Contribution}
+The results of this work could guide anyone who wants to implement a good word predictor. It may also be used to draw conclusions regarding questions that are not the main focus of this work. An example of such questions are ''when does a word predictor have to be efficient?''. Functionality that is bad in theory because it should perform very badly for some situations may prove practically good in a statistical research. Another question is ''what functionality is worth implementing?''. Some functionality may provide minimal improvement while being extremely resource hungry. Hopefully, this report will contribute to the field by providing results and discussions that could help give answers such questions.
+
 \subsection{Outline}
 \lipsum[1]

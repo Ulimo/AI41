@@ -28,3 +28,23 @@ The reasoning for first using a case-sensitive corpus was that the POS tagging r
 
 \paragraph{N-gram size}
 A maximum N-gram size of 4 was chosen for the experiments. Having a larger N-gram size was deemed to not give a significant increase in performance compared to the exponentially increasing number of N-grams and computation time. Grams of a higher size than 5 was also considered being too dependent on the corpus which could result in the word predictor generating very unlikely predictions.
+
+\paragraph{Grammar constraints}
+Several grammar constraints were implemented using POS (Part-of-Speech) tagging. These grammar constraints were supposed to remove some predictions that could be considered very unlikely to be correct.
+
+The implemented grammar constraints with ideas of why they should work were:
+
+\begin{itemize}
+	\item Avoid repeated words - When the user has entered a word it should be highly unlikely that the same word would appear directly after it.
+	\item Avoid multiple conjunctions -  A user rarely wants to enter several conjunctions into a single sentence, for example several “and”s. Therefore only a few conjunctions are allowed.
+	\item Avoid verbs in succession - An English sentence rarely has several verbs in succession. By using POS tagging, even verbs not in the corpus can be identified and more accurate predictions can be made after that verb.
+	\item Ensure SVO - Ensures SVO (Subject-Verb-Object) order for personal pronouns, meaning that only appropriate word types are predicted after a personal pronoun. The allowed word types are verbs, modal verbs, adverbs and conjunctions.
+	\item Possessive pronoun + adjective/noun - A possessive pronoun (my/her/his/its) is often followed by either an adjective or a noun, so any other word type is ignored.
+\end{itemize}
+
+\paragraph{Context recognition}
+A simple context recognition was implemented by exchanging the word “it” with the first noun of the sentence, together with any possessive pronoun or determiner. For example, the sentence “my dog was nice and it was…” would be changed to “my dog was nice and my dog was…”. This exploits the fact that English sentences often follow the SVO order which means that the subject of a sentence is often the first occurring noun in a sentence. The word “it” will most likely point to the subject of the sentence.
+
+For some sentences the first occurring noun is not the subject but rather the object, for example in the sentence “I liked the dog because it was nice”, where the subject is a personal pronoun . However, the implemented context recognition will work well even for sentences like this, because the first noun was “dog”, which in fact was what “it” referred to.
+
+The word “it” is not replaced when predicting the word directly after “it”, since it could sometimes make predictions grammatically incorrect.
