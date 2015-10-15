@@ -4,7 +4,8 @@ File explanation:
 		Makefile for compiling and running word predictor.
 		ARPA-files containing N-grams are stored here.
 	src/
-		Java source files.
+		Java source files
+		... Explain more in detail?
 	raw/
 		Raw data, includes case sensitive corpus and lowercase corpus along with the books used to create them. Makefile to run KYLM to calculate N-grams and store in ARPA-files.
 	lib/
@@ -60,3 +61,19 @@ Compiling and running the word predictor:
 
 	//Everything off, maximum likelihood smoothing lowercase:
 		java -classpath bin:lib/opennlp-tools-1.6.0.jar:lib/opennlp-uima-1.6.0.jar Main mllc nogrammar nocontext
+
+User interface when running program:
+	When starting the program the user is first prompted to choose number of predictions to be displayed every time the word predictor predicts words. Recommended: 5.
+
+	After that the user is prompted to choose the maximum N-gram size to use. Recommended: 4.
+
+	The user is then prompted to enter a sentence for which the next word should be predicted. This sentence can be:
+		1. Blank
+		2. Contain one or several words separated by spaces, e.g. I am a
+		3. Same as above but instead of typing out the entire word, the wildcard character '*' can be used to predict a word beginning with some letter(s). E.g. I am a gentlem*
+
+	The word predictor then shows its predictions to the user, to which the user can choose to select one of the predicted words (typing 0 to 5 if five predictions) or telling the word predictor that none of the words were correct (-1).
+
+	If -1 is entered, the user can continue the sentence in the same way as described above, by entering full words or by using a wildcard in the end.
+
+	It's also possible to restart the word predictor or exit by entering -2 or -3 respectively.
