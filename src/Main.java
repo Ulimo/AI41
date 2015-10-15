@@ -5,8 +5,37 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-	
-		Path p = FileSystems.getDefault().getPath("ml.model.arpa");
+		
+		String path = "kn.model.arpa";
+		if(args.length > 0){
+			switch (args[0]){
+				case "kn": 
+					path = "kn.model.arpa";
+					break;
+				case "abs": 
+					path = "abs.model.arpa";
+					break;
+				case "ml": 
+					path = "ml.model.arpa";
+					break;
+				case "knlc": 
+					path = "kn.model.lowercase.arpa";
+					break;
+				case "abslc": 
+					path = "abs.model.lowercase.arpa";
+					break;
+				case "mllc": 
+					path = "ml.model.lowercase.arpa";
+					break;
+				default:
+					System.out.println("Invalid argument!");
+					System.exit(0);
+			}
+		}
+		System.out.println("Using: "+path);
+		Path p = FileSystems.getDefault().getPath(path);
+		
+		
 		System.out.println("Creating datastructure for N-grams...");
 		NGrams grams = new NGrams(p, "en-pos-maxent.bin");
 		
