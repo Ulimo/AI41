@@ -1,20 +1,6 @@
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Scanner;
-
-import opennlp.tools.postag.POSModel;
-import opennlp.tools.postag.POSTaggerME;
-import opennlp.uima.postag.*;
 
 public class Main {
 
@@ -56,7 +42,7 @@ public class Main {
 				int input = in.nextInt();
 				
 				if(input == -1 || input < -3  || input > result.length-1){
-					//Enter a new word and add it
+					//Enter a new letter or word and add it to the sentence
 					if(sentence.endsWith("*")){
 						sentence = sentence.substring(0, sentence.length()-1);
 						System.out.print(sentence);
