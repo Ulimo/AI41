@@ -12,9 +12,29 @@ public class Grammar {
 	returnValue = returnValue & RemoveEndLine(sentence, tags, probs);
 	//returnValue = returnValue & MyHimHerIts(sentence, tags, probs);
 	returnValue = returnValue & compoundInSuccession(sentence, tags, probs);
-	
+	//returnValue = returnValue & RemoveDotAndComma(sentence);
+	//returnValue = returnValue & MultipleIts(sentence);
  return returnValue;
 }
+	
+	private static boolean RemoveDotAndComma(String[] sentence)
+	{
+		if(sentence[sentence.length - 1].equals(".") || sentence[sentence.length - 1].equals(","))
+			return false;
+		
+		return true;
+		
+	}
+	
+	private static boolean MultipleIts(String[] sentence)
+	{
+		if(sentence.length >= 3)
+		{
+			if(sentence[sentence.length - 3].equals("it") && sentence[sentence.length - 1].equals("it"))
+				return false;
+		}
+		return true;
+	}
 	
 	private static boolean RemoveEndLine(String[] sentence, String[] tags, double[] probs)
 	{
