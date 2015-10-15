@@ -3,15 +3,37 @@
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{fancyhdr}
-\setlength{\headheight}{15pt}
-\fancyhf{} %clears default header and footer
-\lhead{DD2380 Artificial Intelligence}
-\rhead{Proj. report gr. 41}
-\cfoot{Page \thepage\ of \pageref{LastPage}}
 \pagestyle{fancy}
-\usepackage{lastpage}
+\setlength{\headheight}{15pt}
+\fancyhf{}
+\lhead{DD2380 ai15}
+\rhead{J. Kindfält, J. Olsson, M. Sjöberg, A. Östman}
+\cfoot{(\thepage)}
+%\usepackage{lastpage}
 \usepackage{lipsum}
 \usepackage{graphicx}
+\usepackage{url}
+\usepackage{epsfig}
 %\usepackage{wrapfig}
 %\usepackage{natbib}
 %\usepackage{amsmath}
+
+
+%% Titlesection
+
+\title{Word predictor functionality: an evaluation study}
+\author{\hspace*{-0.5cm}{\small GROUP41}\\
+{\footnotesize \begin{tabular}{cccc}
+Jonathan Kindfält & Johannes Olsson & Mikael Sjöberg & Alexander Östman\\
+1993-08-03 & 1989-07-28 & 1993-10-20 & TBA BIRTHDATE \\
+\url{kindfalt@kth.se} & \url{johanneo@kth.se} & \url{miksj@kth.se} & MAIL4@kth.se \\
+\includegraphics[width=0.13\linewidth]{./img/turing.jpg} & 
+\includegraphics[width=0.13\linewidth]{./img/turing.jpg} & 
+\includegraphics[width=0.13\linewidth]{./img/turing.jpg} & 
+\includegraphics[width=0.13\linewidth]{./img/turing.jpg}
+\end{tabular}}}
+% Normally there will not be any pictures but we want
+% these so that we can connect faces to names in the course
+% We also want birthdates so that we can tell people with the same
+% name apart
+\date{}

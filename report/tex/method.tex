@@ -1,7 +1,7 @@
 \section{Method}
-This suction explains briefly how the implementation was done and how the experiments were conducted.
+This section explains how the implementation was done and how the experiments were conducted. After that follows an outline of the experiment setup and a discussion of the experiments.
 \subsection{Implementation}
-Implementation was done using two libraries and several books to make a corpus. KYLM !!!REF!!! was a library that had several smoothing techniques implemented. We used it to process our corpus and make an arpa-file, consisting of n-grams of different sizes and their probability derived from the corpus and chosen smoothing technique. We also used OpenNLP !!!REF!!!, a part-of-speech-tagger that we could use in the implementation of grammar constraints in the word predictor. The rest of the program: searching the arpa-files, grammar constraints, context recognition and user interface was implemented by the authors.\\
+Implementation was done using two libraries and several books to make a corpus. KYLM\footnote{A full list of resources can be found in section \ref{sec:resources}} was a library that had several smoothing techniques implemented. We used it to process our corpus and make an arpa-file, consisting of n-grams of different sizes and their probability derived from the corpus and chosen smoothing technique. We also used OpenNLP, a part-of-speech-tagger that we could use in the implementation of grammar constraints in the word predictor. The rest of the program: searching the arpa-files, grammar constraints, context recognition and user interface was implemented by the authors.\\
 
 To test our hypotheses, a qualitative inductive method was used. Evaluation and comparison of the different functionalities was made by measuring keystroke counts. This seemed to be a widely used method, and suited our project as it is an objective performance evaluation, and user interface/experience was of no interest for the study.\\
 
@@ -16,3 +16,5 @@ Four sentences that were thought to bring out the differences in the different f
 \caption{Diagram showing how experiments were conducted}
 \end{figure}
 Tests were then performed for each sentence, for each combination of functionalities and for each smoothing technique, which made a total of 48 different tests. From here follows a more detailed description of the evaluation and the experiment parameters.
+\subsection{Experimental setup}
+\lipsum[1]
