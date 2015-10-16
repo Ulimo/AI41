@@ -8,13 +8,11 @@ The implemented grammar constraints worked by removing predictions that could be
 
 The implemented grammar constraints with ideas of why they should work were:
 
-\begin{itemize}
-	\item Avoid repeated words - When the user has entered a word it should be highly unlikely that the same word would appear directly after it.
-	\item Avoid multiple conjunctions -  A user rarely wants to enter several conjunctions into a single sentence, for example several “and”s. Therefore only a few conjunctions are allowed.
-	\item Avoid verbs in succession - An English sentence rarely has several verbs in succession. By using POS tagging, even verbs not in the corpus can be identified and more accurate predictions can be made after that verb.
-	\item Ensure SVO - Ensures SVO (Subject-Verb-Object) order for personal pronouns, meaning that only appropriate word types are predicted after a personal pronoun. The allowed word types are verbs, modal verbs, adverbs and conjunctions.
-	\item Possessive pronoun + adjective/noun - A possessive pronoun (my/her/his/its) is often followed by either an adjective or a noun, so any other word type is ignored.
-\end{itemize}
+\emph{Avoid repeated words} - When the user has entered a word it should be highly unlikely that the same word would appear directly after it.
+\emph{Avoid multiple conjunctions} - Only a small number of conjunctions are allowed, because a normal sentence rarely contains many conjunctions.
+\emph{Avoid verbs in succession} - An English sentence rarely has several verbs in succession. Verbs not in the corpus can be identified and more accurate predictions can be made by not allowing other verbs to follow.
+\emph{Ensure SVO} - Ensures a form of SVO order by ensuring that personal pronouns are only followed by a verb, modal verb, adverb or conjunction.
+\emph{Possessive pronoun + adjective/noun} - A possessive pronoun is often followed by either an adjective or a noun, so any other word type is ignored.
 
 \paragraph{Context recognition}
 Context recognition was implemented by exchanging the word “it” with the first noun of the sentence, together with any possessive pronoun or determiner. For example, the sentence “my dog is nice and it is…” would be changed to “my dog is nice and my dog is…”. The word “it” will often point to the subject of the sentence.
