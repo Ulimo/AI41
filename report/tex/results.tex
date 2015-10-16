@@ -1,7 +1,12 @@
 \section{Results and analysis}
 This chapter shows the different results from the experiments. Both on how the different smoothing techniques, grammar analysis and context can change the number of keystrokes needed to complete a sentence, and a qualitative analysis on the results from using context recognition.
 \input{./tex/results_tables.tex}
-\subsection{Smoothing-techniques}
+\subsection{Keystrokes}
+From the tables with case sensitive n-grams, it is seen that absolute discounting show better results than kneser-ney in two of the sentences. This differs slightly from our hypothesis that kneser-ney should present better results. In the case insensitive tables it can be seen that the difference is smaller. Both smoothing techniques now take the same amount of keystrokes for the first sentence, and kneser-ney performs better in one sentence while absolute discounting performs better in another. This difference can be that kneser-ney uses a continuation count to calculate its probabilities. In the case sensitive case “The car” and “the car” becomes two different n-grams, the continuation count of “the” will be wrong in that case. This could explain the result from the case sensitive result, since the continuation count gets distorted. 
+
+Usage of grammar constraints show that the results actually is worse than without it. This can be due to many reasons: badly implemented grammar constraints, grammar constraints conflicting with each other. Since the english language is complex there are many rules which do not always apply in certain situations. Aurora-systems which developed a word predictor writes that grammatical rules only apply if the writer does not know how to formulate correct sentences, otherwise it is more of a hindrance\cite{aurora}.
+
+In the context recognition results it is seen that the fabricated sentence explained in Test sentences performs better than without context recognition. This is most probably the case just because the sentence is fabricated and the corpus contains the n-gram “the world was wide”. In the first sentence the context recognition does not provide any improvements. This shows that for the context recognition to work, there actually needs to be an N-gram which contains the actual sentence. In regards to the hypothesis this is quite correct, as long as there are n-grams which contain the contextual word there will be a better prediction. This could mean that as found by Gregory W. Lesher et.al that the performance scales with the training set size\cite{Lesher99effectsof}, this implementation of context may scale depending on training set size aswell.
 \vspace{1em}
 \subsection*{Experiments with case-sensitivity}
 \subsection*{Experiments with case-insensitivity (Grammar constraints not used)}

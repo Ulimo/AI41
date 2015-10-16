@@ -1,14 +1,14 @@
 \subsection{Keystroke experiment}
-This experiment focused on testing the different sentences explained in \emph{test sentences} and how the different techniques applied in the work can change the number of keystrokes needed to complete a sentence.
-
-The results are shown in two different sections, with case sensitive n-grams, and with case insensitive n-grams. Every section contains three tables for the three different smoothing techniques: Kneser-ney, absolute discounting and maximum likelihood (no smoothing). Every column represent if grammar or context was used when counting the number of keystrokes needed.
+This experiment focused on testing the different sentences explained in \emph{test sentences} and how the different techniques applied in the work can change the number of keystrokes needed to complete a sentence. Every column represent if grammar or context was used when counting the number of keystrokes needed.
 
 %\caption{Case-sensitive}
-{\footnotesize
+%{\scriptsize
 \begin{table}[H]
 \centering
 \caption{Kneser-ney and case-sensitive n-grams}
+{\scriptsize
 \begin{tabular}{ |p{0.5\textwidth}|c|c|c|c| }
+
 	\hline
 	\multicolumn{5}{|c|}{Kneser-Nay} \\
 	\hline
@@ -23,12 +23,14 @@ The results are shown in two different sections, with case sensitive n-grams, an
 	I went in to the world and it was wide & 7/29 & 5/29 & 6/29 & 6/29 \\
 	\hline
 \end{tabular}
+}
 \end{table}
 
 \vspace{-1cm}
 \begin{table}[H]
 \centering
 \caption{Absolute discounting and case-sensitive n-grams}
+{\scriptsize
 \begin{tabular}{ |p{0.5\textwidth}|c|c|c|c| }
 	\hline
 	\multicolumn{5}{|c|}{Absolute discount} \\
@@ -44,12 +46,14 @@ The results are shown in two different sections, with case sensitive n-grams, an
 	I went in to the world and it was wide & 8/29 & 7/29 & 7/29 & 8/29 \\
 	\hline
 \end{tabular}
+}
 \end{table}
 
 \vspace{-1cm}
 \begin{table}[H]
 \centering
 \caption{Maximum likelihood and case-sensitive n-grams}
+{\scriptsize
 \begin{tabular}{ |p{0.5\textwidth}|c|c|c|c| }
 	\hline
 	\multicolumn{5}{|c|}{Maximum likelihood} \\
@@ -65,6 +69,7 @@ The results are shown in two different sections, with case sensitive n-grams, an
 	I went in to the world and it was wide & 8/29 & 7/29 & 7/29 & 8/29 \\
 	\hline
 \end{tabular}
+}
 \end{table}
 \vspace{-1cm}
 
@@ -74,6 +79,7 @@ The results are shown in two different sections, with case sensitive n-grams, an
 %\caption{Case-insensitive}
 \centering
 \caption{Kneser-ney and case-insensitive n-grams}
+{\scriptsize
 \begin{tabular}{ |p{0.5\textwidth}|c|c|c|c| }
 	\hline
 	\multicolumn{5}{|c|}{Kneser-Nay} \\
@@ -89,12 +95,14 @@ The results are shown in two different sections, with case sensitive n-grams, an
 	I went in to the world and it was wide & 0 & 4/29 & 0 & 6/29 \\
 	\hline
 \end{tabular}
+}
 \end{table}
 
 \vspace{-1cm}
 \begin{table}[H]
 \centering
-\caption{Kneser-ney and case-insensitive n-grams}
+\caption{Absolute discount and case-insensitive n-grams}
+{\scriptsize
 \begin{tabular}{ |p{0.5\textwidth}|c|c|c|c| }
 	\hline
 	\multicolumn{5}{|c|}{Absolute discount} \\
@@ -110,12 +118,14 @@ The results are shown in two different sections, with case sensitive n-grams, an
 	I went in to the world and it was wide & 0 & 5/29 & 0 & 7/29 \\
 	\hline
 \end{tabular}
+}
 \end{table}
 
 \vspace{-1cm}
 \begin{table}[H]
 \centering
-\caption{Some caption...}
+\caption{Maximum likelihood and case-insensitive n-grams}
+{\scriptsize
 \begin{tabular}{ |p{0.5\textwidth}|c|c|c|c| }
 	\hline
 	\multicolumn{5}{|c|}{Maximum likelihood} \\
@@ -131,15 +141,17 @@ The results are shown in two different sections, with case sensitive n-grams, an
 	I went in to the world and it was wide & 0 & 7/29 & 0 & 8/29 \\
 	\hline
 \end{tabular}
+}
 \end{table}
 
 \subsection{Context recognition}
-This chapter show some different results of the suggested words in different contextual scenarios and smoothing techniques. All the suggested words are from the case insensitive testing.
+These tables show different predictions given as the next word for a given sentence with and without context recognition.
 
-\vspace{-1cm}
+\vspace{-0.5cm}
 \begin{table}[H]
 \centering
-\caption{Some caption...}
+\caption{Predictions of kneser-ney without context recognition}
+{\scriptsize
 \begin{tabular}{ |p{0.35\textwidth}|c|c|c|c|c| }
 	\hline
 	\multicolumn{6}{|c|}{Context recognition} \\
@@ -151,12 +163,14 @@ This chapter show some different results of the suggested words in different con
 	my dog and i went to the beach and it was & the & a & not & as & only \\
 	\hline
 \end{tabular}
+}
 \end{table}
 
 \vspace{-1cm}
 \begin{table}[H]
 \centering
-\caption{Some caption...}
+\caption{Predictions of kneser-ney with context recognition}
+{\scriptsize
 \begin{tabular}{ |p{0.35\textwidth}|c|c|c|c|c| }
 	\hline
 	\multicolumn{6}{|c|}{Context recognition} \\
@@ -168,12 +182,14 @@ This chapter show some different results of the suggested words in different con
 	my dog and i went to the beach and it was & not & apparently & a & the & in \\
 	\hline
 \end{tabular}
+}
 \end{table}
 
 \vspace{-1cm}
 \begin{table}[H]
 \centering
-\caption{Some caption...}
+\caption{Predictions of maximum likelihood with context recognition}
+{\scriptsize
 \begin{tabular}{ |p{0.35\textwidth}|c|c|c|c|c| }
 	\hline
 	\multicolumn{6}{|c|}{Context recognition} \\
@@ -183,5 +199,5 @@ This chapter show some different results of the suggested words in different con
 	I went into the world and it was & being & frightened & full & itself & more \\
 	\hline
 \end{tabular}
-\end{table}
 }
+\end{table}
