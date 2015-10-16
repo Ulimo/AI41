@@ -17,6 +17,11 @@ public class Grammar {
 	 return returnValue;
 }
 	
+	/**
+	 * Removes dots and commas as a prediction
+	 * @param sentence
+	 * @return
+	 */
 	private static boolean RemoveDotAndComma(String[] sentence)
 	{
 		if(sentence[sentence.length - 1].equals(".") || sentence[sentence.length - 1].equals(","))
@@ -26,6 +31,11 @@ public class Grammar {
 		
 	}
 	
+	/**
+	 * Check that an a sentence cannot contain it two times with a word between them, such as "it and it".
+	 * @param sentence
+	 * @return
+	 */
 	private static boolean MultipleIts(String[] sentence)
 	{
 		if(sentence.length >= 3)
@@ -36,6 +46,13 @@ public class Grammar {
 		return true;
 	}
 	
+	/**
+	 * Removes the prediction of the end line
+	 * @param sentence
+	 * @param tags
+	 * @param probs
+	 * @return
+	 */
 	private static boolean RemoveEndLine(String[] sentence, String[] tags, double[] probs)
 	{
 		if(sentence[sentence.length - 1].equals("</s>"))
@@ -44,6 +61,13 @@ public class Grammar {
 		return true;
 	}
 	
+	/**
+	 * Check that the same word cannot repeat itself twice
+	 * @param sentence
+	 * @param tags
+	 * @param probs
+	 * @return
+	 */
 	private static boolean CheckRepeat(String[] sentence, String[] tags, double[] probs)
 	{
 		
@@ -54,6 +78,13 @@ public class Grammar {
 		return true;
 	}
 	
+	/**
+	 * Not used at this time
+	 * @param sentence
+	 * @param tags
+	 * @param probs
+	 * @return
+	 */
 	public static boolean MyHimHerIts(String[] sentence, String[] tags, double[] probs)
 	{
 		if(tags[tags.length - 2].equals("PRP$") && !tags[tags.length - 1].startsWith("JJ") && !tags[tags.length - 1].startsWith("NN"))
@@ -61,6 +92,13 @@ public class Grammar {
 		return true;
 	}
 	
+	/**
+	 * Check that a verb or similar should come after a PRP tag
+	 * @param sentence
+	 * @param tags
+	 * @param probs
+	 * @return
+	 */
 	private static boolean CheckSVO(String[] sentence, String[] tags, double[] probs)
 	{
 		if(sentence.length > 2)
@@ -73,6 +111,13 @@ public class Grammar {
 		return true;
 	}
 	
+	/**
+	 * Not used
+	 * @param sentence
+	 * @param tags
+	 * @param probs
+	 * @return
+	 */
 	private static boolean CheckProbabilities(String[] sentence, String[] tags, double[] probs)
 	{
 	if(probs[probs.length - 1] < 0.1)
@@ -83,6 +128,13 @@ public class Grammar {
 		return true;
 	}
 	
+	/**
+	 * Check that two verbs cannot come after each other
+	 * @param sentance
+	 * @param tags
+	 * @param probs
+	 * @return
+	 */
 	private static boolean verbsInSuccession(String[] sentance, String[] tags, double[] probs)
 	{
 		if(tags[tags.length -2].charAt(0) == 'V' && tags[tags.length - 1].charAt(0) == 'V')
@@ -91,6 +143,13 @@ public class Grammar {
 		return true;
 	}
 	
+	/**
+	 * Check that two compounds should not come after eachother
+	 * @param sentance
+	 * @param tags
+	 * @param probs
+	 * @return
+	 */
 	private static boolean compoundInSuccession(String[] sentance, String[] tags, double[] probs){
 		
 		if((tags[tags.length -1].charAt(0) == 'C' && tags[tags.length - 1].charAt(1) == 'C') && 

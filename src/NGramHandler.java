@@ -6,17 +6,25 @@ import opennlp.uima.postag.*;
 
 public class NGramHandler {
 
-	private int Number = 0;
+	private int Number = 0; //Contains the number of n-grams added to the handler
 	
-	private int NGramSize;
+	private int NGramSize; //The size of the n-grams in this handler
 	
-	private NGram[] grams;
+	private NGram[] grams; //Array containing the n-grams
 	
+	/**
+	 * Returns the number of n-grams inside this handler
+	 * @return
+	 */
 	public int GetNumberOfGrams()
 	{
 		return grams.length;
 	}
 	
+	/**
+	 * Returns the size of the N in the n-grams in the handler
+	 * @return
+	 */
 	public int GetGramSize()
 	{
 		return NGramSize;
@@ -28,6 +36,9 @@ public class NGramHandler {
 		this.grams = new NGram[NumberOfGrams];
 	}
 	
+	/**
+	 * Sort all n-grams in this handler for binary search
+	 */
 	public void Sort()
 	{
 		Arrays.sort(grams, 0, Number);
@@ -66,6 +77,13 @@ public class NGramHandler {
 		return new int[] {s, r};
 	}
 	
+	/**
+	 * Sends a n-gram to the grammar check and will return true if the word is ok, false if it is not
+	 * @param wordsForGrammar
+	 * @param nextgram
+	 * @param posModel
+	 * @return
+	 */
 	private boolean SendToGrammarCheck(String[] wordsForGrammar, NGram nextgram, POSTaggerME posModel)
 	{
 		wordsForGrammar[wordsForGrammar.length - 1] = nextgram.GetLastWord();
@@ -76,6 +94,16 @@ public class NGramHandler {
 		return Grammar.getGrammar(wordsForGrammar, tags, probs);
 	}
 
+	
+	/**
+	 * Returns the most probable n-grams up to a maximum of size.
+	 * @param start
+	 * @param end
+	 * @param size
+	 * @param wordsForGrammar
+	 * @param posModel
+	 * @return
+	 */
 	private NGram[] MostProbable(int start, final int end, final int size, String[] wordsForGrammar, POSTaggerME posModel) {
 		assert start >= 0;
 		assert end > start;
@@ -116,6 +144,14 @@ public class NGramHandler {
 		return res;
 	}
 	
+	/**
+	 * Returns the most probable n-grams up to prediction count
+	 * @param wordsForGrammar
+	 * @param words
+	 * @param PredictionCount
+	 * @param posModel
+	 * @return
+	 */
 	public NGram[] getMostProbableGrams(String[] wordsForGrammar, String[] words, int PredictionCount, POSTaggerME posModel)
 	{
 		NGram toFind = new NGram(words, 0, 0);
@@ -125,6 +161,10 @@ public class NGramHandler {
 		return MostProbable(interval[0], interval[1], Predict, wordsForGrammar, posModel);
 	}
 	
+	/**
+	 * Add a n-gram to the handler
+	 * @param gram
+	 */
 	public void AddNGram(NGram gram)
 	{
 		this.grams[Number] = gram;

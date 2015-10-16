@@ -13,18 +13,28 @@ import opennlp.tools.postag.POSTaggerME;
 
 public class NGrams {
 	
-	HashMap<Integer, NGramHandler> handlers;
+	HashMap<Integer, NGramHandler> handlers; //Hash map which contains handlers which represent each n-gram size with its respective grams
 	
-	private int LargestNGramSize;
+	private int LargestNGramSize; //The largest n-gram size available
 	
-	private POSTaggerME tagger = null;
+	private POSTaggerME tagger = null; //Reference to OpenNLP pos tagger
 
+
+	/**
+	 * Constructor, creates a new ngram model
+	 * @param pathToCorpus The path to the Arpa file with n-grams
+	 * @param PathToPOS Path to the POS data for OpenNLP POSTagger
+	 */
 	public NGrams(Path pathToCorpus, String PathToPOS)
 	{
-		ReadTrainingData(pathToCorpus);
-		CreatePosModel(PathToPOS);
+		ReadTrainingData(pathToCorpus); //Read the arpa file
+		CreatePosModel(PathToPOS); //Create the POS tagger
 	}
 	
+	/**
+	 * Creates a new OpenNLP POS tagger
+	 * @param PathToPOS
+	 */
 	private void CreatePosModel(String PathToPOS)
 	{
 		InputStream modelIn = null;
@@ -49,15 +59,24 @@ public class NGrams {
 		}
 	}
 	
+	/**
+	 * Read the training data for the n-grams from an arpa file
+	 * @param p
+	 */
 	private void ReadTrainingData(Path p)
 	{
-		ArpaRead reader = new ArpaRead(p);
-		handlers = reader.GetNGrams();
+		ArpaRead reader = new ArpaRead(p); //Create a new arpa reader which creates n-grams from an arpa file
+		handlers = reader.GetNGrams(); //Get the created handlers
 		
 		
-		SortHandlers();
+		SortHandlers(); //Sort n-grams for binary search
 	}
 	
+	/**
+	 * Finds the location of the last occuring it, and replace it with the first occuring noun in a sentence.
+	 * @param words
+	 * @return
+	 */
 	private String[] findSubjectChangeIt(String[] words)
 	{
 		//If context is disabled, do nothing = return words
@@ -95,6 +114,13 @@ public class NGrams {
 		return words;
 	}
 	
+	/**
+	 * Get a prediction of the word that is currently being written.
+	 * @param sentance
+	 * @param PredictionCount
+	 * @param MaxNgramSize
+	 * @return
+	 */
 	public NGram[] GetPrediction(String sentance, int PredictionCount, int MaxNgramSize)
 	{
 		//sentance = sentance.toLowerCase();
@@ -102,7 +128,7 @@ public class NGrams {
 		
 		String[] wordclones = words.clone();
 		words = findSubjectChangeIt(words);
-		//ArrayToLowercase(words);
+		ArrayToLowercase(words);
 		ArrayList<NGram> outList = new ArrayList<>();
 		
 		String[] wordsForGrammar = new String[wordclones.length + 1];
@@ -113,7 +139,7 @@ public class NGrams {
 		}
 		
 		int HighestGram = Math.min(MaxNgramSize, Math.min(words.length, LargestNGramSize));
-		//Not yet implemented, should look at the last words up to the largest n-gram size (WordCount + 1)
+
 		for(int i = HighestGram; i >= 1; i--)
 		{
 			NGramHandler handler = handlers.get(i);
@@ -149,6 +175,10 @@ public class NGrams {
 		return ReturnArray(outList);	
 	}
 	
+	/**
+	 * Make all strings in an array to lowercase
+	 * @param stringArray
+	 */
 	private void ArrayToLowercase(String[] stringArray)
 	{
 		for(int i = 0; i < stringArray.length; i++)
@@ -157,6 +187,11 @@ public class NGrams {
 		}
 	}
 	
+	/**
+	 * Add an n-gram to a list if if it doesnt exist inside the list, O(n) for each insertion, keep the list short.
+	 * @param list
+	 * @param toAdd
+	 */
 	private void AddToList(ArrayList<NGram> list, NGram toAdd)
 	{
 		for(int i = 0; i < list.size(); i++)
@@ -167,6 +202,11 @@ public class NGrams {
 		list.add(toAdd);
 	}
 	
+	/**
+	 * Returns an array from a ArrayList
+	 * @param list
+	 * @return
+	 */
 	private NGram[] ReturnArray(ArrayList<NGram> list)
 	{
 		NGram[] arr = new NGram[list.size()];
@@ -174,6 +214,13 @@ public class NGrams {
 		return list.toArray(arr);
 	}
 	
+	/**
+	 * Returns the next word prediction from a sentence.
+	 * @param sentance
+	 * @param PredictionCount
+	 * @param MaxNgramSize
+	 * @return
+	 */
 	public NGram[] GetPredictionNextWord(String sentance, int PredictionCount, int MaxNgramSize)
 	{
 		//sentance = sentance.toLowerCase();
@@ -181,7 +228,7 @@ public class NGrams {
 		
 		String[] wordclones = words.clone();
 		words = findSubjectChangeIt(words);
-		//ArrayToLowercase(words);
+		ArrayToLowercase(words);
 		ArrayList<NGram> outList = new ArrayList<>();
 		
 		String[] wordsForGrammar = new String[wordclones.length + 1];
@@ -192,7 +239,7 @@ public class NGrams {
 		}
 		
 		int HighestGram = Math.min(MaxNgramSize, Math.min(words.length + 1, LargestNGramSize));
-		//Not yet implemented, should look at the last words up to the largest n-gram size (WordCount + 1)
+
 		for(int i = HighestGram; i >= 1; i--)
 		{
 			NGramHandler handler = handlers.get(i);
@@ -229,6 +276,11 @@ public class NGrams {
 		return ReturnArray(outList);	
 	}
 	
+	/**
+	 * Clean up of an array, remove occurences of null and create a new array with the exact size of the entries.
+	 * @param arr
+	 * @return
+	 */
 	private NGram[] Cleanup(NGram[] arr)
 	{
 		int nonNull = 0;
@@ -255,7 +307,9 @@ public class NGrams {
 	}
 	
 	
-	
+	/**
+	 * Sort the n-grams in each handler to be used for binary search.
+	 */
 	private void SortHandlers()
 	{
 		int LargestGramSize = 0;
