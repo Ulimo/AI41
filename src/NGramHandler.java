@@ -85,8 +85,8 @@ public class NGramHandler {
 
 		for ( ; start < end ; ++start ) {
 			
-			//Grammar stuff here
-			if(!SendToGrammarCheck(wordsForGrammar, grams[start], posModel))
+			//Call grammar check only if grammar checking is turned on
+			if(Main.useGrammar && !SendToGrammarCheck(wordsForGrammar, grams[start], posModel))
 			{
 				continue;
 			}

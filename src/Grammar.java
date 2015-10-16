@@ -3,18 +3,18 @@ public class Grammar {
 	
 	public static boolean getGrammar(String[] sentence,String [] tags, double[] probs){
 		
-	boolean returnValue = true;	
-		
-	returnValue = returnValue & verbsInSuccession(sentence, tags, probs);
-	//returnValue = returnValue & CheckProbabilities(sentence, tags, probs);
-	returnValue = returnValue & CheckSVO(sentence, tags, probs);
-	returnValue = returnValue & CheckRepeat(sentence, tags, probs);
-	returnValue = returnValue & RemoveEndLine(sentence, tags, probs);
-	//returnValue = returnValue & MyHimHerIts(sentence, tags, probs);
-	returnValue = returnValue & compoundInSuccession(sentence, tags, probs);
-	//returnValue = returnValue & RemoveDotAndComma(sentence);
-	//returnValue = returnValue & MultipleIts(sentence);
- return returnValue;
+		boolean returnValue = true;	
+			
+		returnValue = returnValue & verbsInSuccession(sentence, tags, probs);
+		//returnValue = returnValue & CheckProbabilities(sentence, tags, probs);
+		returnValue = returnValue & CheckSVO(sentence, tags, probs);
+		returnValue = returnValue & CheckRepeat(sentence, tags, probs);
+		returnValue = returnValue & RemoveEndLine(sentence, tags, probs);
+		//returnValue = returnValue & MyHimHerIts(sentence, tags, probs);
+		returnValue = returnValue & compoundInSuccession(sentence, tags, probs);
+		//returnValue = returnValue & RemoveDotAndComma(sentence);
+		//returnValue = returnValue & MultipleIts(sentence);
+	 return returnValue;
 }
 	
 	private static boolean RemoveDotAndComma(String[] sentence)

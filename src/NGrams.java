@@ -60,6 +60,11 @@ public class NGrams {
 	
 	private String[] findSubjectChangeIt(String[] words)
 	{
+		//If context is disabled, do nothing = return words
+		if(!Main.useContext){
+			return words;
+		}
+		
 		String[] tags = tagger.tag(words);
 		int indexOfIt=-1;
 		for(int i=words.length-2; i>=0 && ((words.length-2)-i)<LargestNGramSize; i--){

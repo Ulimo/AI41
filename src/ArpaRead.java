@@ -75,7 +75,7 @@ public class ArpaRead {
 					grams.get(nGramSize).AddNGram(new NGram(words, Double.parseDouble(splitted[0]), backoff));
 				}
 			}
-			System.err.println(LineNumber);
+			//System.err.println(LineNumber);
 		}
 	}
 	
