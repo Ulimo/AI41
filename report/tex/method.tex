@@ -23,18 +23,11 @@ The word “it” is not replaced when predicting the word directly after “it�
 
 \subsection{Evaluation}
 
-\begin{figure}[p]
-\center
-\includegraphics[width=0.7\textwidth]{img/experiment_diagram.png}
-\caption{Diagram showing how experiments were generated}
-\label{fig:experiments}
-\end{figure}
-
 To test our hypotheses, a qualitative inductive method was used. Evaluation and comparison of the different functionalities was made by measuring keystroke rates for typing whole sentences. This was a widely used method for similar projects\cite{keystrokes}, and suited our project as it is an objective performance evaluation, compared to perception testing which produces more subjective results.
 
 In the constructed keystroke experiment, for a given word, the number of keystrokes were the number of letters that the participant had to enter in order for the word predictor to suggest the word the participant meant to write. In this experiment, the word predictor might suggest the thought of word without any keystrokes, in which case the keystroke count for that word is zero. Spaces between words did not count as keystrokes.
 
-The process of generating experiments is shown in figure \ref{fig:experiments}. Four sentences that were thought to display the differences in the different functionalities were constructed. Tests were then performed for each sentence, for each combination of functionalities and for each smoothing technique, which made a total of 48 different tests. After that, some tests were rerun with case-insensitivity. POS tagging did not work well with case insensitivity so grammar constraints were therefore always set to \emph{off}, resulting in an additional 24 tests.
+For this work, four sentences that were thought to display the differences in the different functionalities were constructed. Tests were then performed for each sentence, for each combination of functionalities and for each smoothing technique, which made a total of 48 different tests. After that, some tests were rerun with case-insensitivity. POS tagging did not work well with case insensitivity so grammar constraints were therefore always set to \emph{off}, resulting in an additional 24 tests.
 
 \paragraph{Test sentences}
 The motivation for the test sentences and their anticipated results were:
