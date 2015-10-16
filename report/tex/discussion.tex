@@ -1,4 +1,22 @@
 \section{Discussion}
-\lipsum[3-9]
-\subsection{Future work}
-\lipsum[3-9]
+
+\paragraph{Method}
+Using KSR was chosen as it would produce objective results for this qualitative study. It may, however, give a somewhat misleading result as the word predictor may seem more efficient than it actually is. The reason is that filtering is done on the first few letters of the last words. In a small corpus, that could mean that there are few, or maybe even just one option of words when a few strokes have been made which makes prediction easy. For the same reason, it makes sense to make experiments with a large corpus so prediction still can differ when a large part of a word is given. There are also subjective parts of this work. People write differently and our fabricated sentences may not be relevant to some. Perception testing could produce interesting results, where subjects can rate how relevant words are to what they wanted to write. Perhaps the word predictor manages to predict a synonym that could substitute for the planned word.
+
+Quantitative perception testing should also have be a better method than KSR to test functionality that make trade offs in the way that they should work well in certain situations, such as grammar constraints. These situation may occur at different frequency for different test subjects, meaning that some experience more of the positive effect while others experience more of the negative.
+
+\paragraph{Implementation}
+Writing grammar constraints for the English language proved to be hard. Nevertheless, the way they were implemented in the word predictor for this study made the word predictor unable to predict words that were constituted exceptions to the grammar constraint. Instead of forbidding these words, it should have been better to let the constraints decrease the probability of words, rather than ruling them out completely.
+
+Furthermore, grammar constraints can be assumed to have greater effects when a desired word occurs scarcely, or not at all, in the corpus. To enhance the grammar constraints’ effect on predictability, grammar constraints for proper nouns (names) could have been implemented since those words often do not occur in corpora.
+The experiments show that context recognition helped produce better word predictions. However, due to the fact that the authors both implemented the word predictor and came up with the test sentences, the sentences were made to fit the implementation. If strangers to the implementation were to come up with sentences the context recognition might have made incorrect assumptions as to what the word “it” referred to. This would make the word predictor produce words for a different context than what the user is thinking about, which will most likely be way off.
+
+A possible way to protect against such sentences could be to interpolate the probabilities from the word “it” and the word found by the context recognition to produce more even results. Another possible way would be to implement a more advanced context recogniser, since the one implemented is rather simple.
+
+(...These problems further points out the need to make more thorough experiments to test the implemented functions. Further tests could include more test sentences and a larger corpus.)
+
+A decision was made to not model unknown words when producing the N-grams. This was because a large amount of trust was given to the corpus being good and having a lot of common combination of words. Having a word predictor that finds out that an uncommon word is most probably also felt counterproductive, since it is better to give any prediction than to give none.
+
+Modelling unknown words could however help in some cases. If a word unseen in the corpus would appear in a sentence, it could be labeled as an unknown word. It would thereafter be possible to find N-grams corresponding to this wildcard sentence. For example, the sentence “My dog Fido is” would produce the N-gram “My dog <UNK> is” with unknown word modelling and only “is” without. With unknown word modelling, context can be conserved in a way that is not possible otherwise. It would have been interesting to implement unknown word modelling as well to see if and how the results differ.
+
+The implemented word predictor always tries to predict the most probable word, no matter how short it might be. It might however be better to omit words which are a very short. For example, successfully predicting the word “a” only saves one keystroke, while predicting a word such as “another” would save seven keystrokes.

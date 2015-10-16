@@ -48,3 +48,20 @@ A simple context recognition was implemented by exchanging the word “it” wit
 For some sentences the first occurring noun is not the subject but rather the object, for example in the sentence “I liked the dog because it was nice”, where the subject is a personal pronoun . However, the implemented context recognition will work well even for sentences like this, because the first noun was “dog”, which in fact was what “it” referred to.
 
 The word “it” is not replaced when predicting the word directly after “it”, since it could sometimes make predictions grammatically incorrect.
+
+\paragraph{Test sentences}
+This chapter explains the reasoning for coming up with the test sentences and their anticipated results.
+
+\emph{My dog and I went to the beach and it was happy}
+This sentence was constructed to test the context functionality of the word predictor. It contains the noun “dog” which is the subject of the sentence. With context recognition, the word “it” will be replaced by “my dog” which should make the predicted words more accurate and thus save more keystrokes.
+
+\emph{I ran to the school}
+This sentence was created to test the grammar functionality. The sentence contains “I”, a personal pronoun, for which some grammar constraints are implemented. Some improbable suggestions could therefore be removed which should result in a higher probability of showing the correct word, and thus less keystrokes should be required.
+
+\emph{I went into the world and it was wide}
+This sentence was fabricated to show the context recognition for when the word “it” refers to the object of the sentence, “the world”. Since “the world was wide” exists as an N-gram in the corpus, and “it was wide” is not a very common statement compared to other “it was”-combinations, this should result in more accurate word predictions.
+
+The sentence also tests grammar constraints in a similar manner as the sentence “I ran to the school”.
+
+\emph{Where shall we meet}
+This sentence was constructed as an everyday language sentence, for showing how the word predictor could perform for text messaging. Context recognition will not matter for this sentence, but grammar constraints could make the predictions more accurate.
