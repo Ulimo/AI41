@@ -4,10 +4,15 @@ File explanation:
 		Makefile for compiling and running word predictor.
 		ARPA-files containing N-grams are stored here.
 	src/
-		Java source files
-		... Explain more in detail?
+		Java source files:
+			Main.java - Contains the main function where the path to files are described and the command line user interface is defined.
+			ArpaRead.java - Represents an ARPA file reader, able to parse an ARPA formatted file and create a NGram Java object for every N-gram.
+			NGram.java - Represents a single N-gram.
+			NGrams.java - Represents all the N-grams of a given size(?). The context recognition is placed here for convenience.
+			NGramHandler.java - ?
+			Grammar.java - Handles checking for various grammar constraints.
 	raw/
-		Raw data, includes case sensitive corpus and lowercase corpus along with the books used to create them. Makefile to run KYLM to calculate N-grams and store in ARPA-files.
+		Raw data, includes case sensitive corpus and lowercase corpus along with the books used to create them. Makefile to run KYLM to calculate N-grams and create ARPA-files.
 	lib/
 		Library files, OpenNLP and KYLM jar files.
 	bin/
@@ -72,7 +77,7 @@ User interface when running program:
 		2. Contain one or several words separated by spaces, e.g. I am a
 		3. Same as above but instead of typing out the entire word, the wildcard character '*' can be used to predict a word beginning with some letter(s). E.g. I am a gentlem*
 
-	The word predictor then shows its predictions to the user, to which the user can choose to select one of the predicted words (typing 0 to 5 if five predictions) or telling the word predictor that none of the words were correct (-1).
+	The word predictor then shows its predictions to the user, to which the user can choose to select one of the predicted words (typing 0 to 4 if five predictions) or telling the word predictor that none of the words were correct (-1).
 
 	If -1 is entered, the user can continue the sentence in the same way as described above, by entering full words or by using a wildcard in the end.
 
