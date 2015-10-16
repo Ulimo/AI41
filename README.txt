@@ -8,8 +8,8 @@ File explanation:
 			Main.java - Contains the main function where the path to files are described and the command line user interface is defined.
 			ArpaRead.java - Represents an ARPA file reader, able to parse an ARPA formatted file and create a NGram Java object for every N-gram.
 			NGram.java - Represents a single N-gram.
-			NGrams.java - Represents all the N-grams of a given size(?). The context recognition is placed here for convenience.
-			NGramHandler.java - ?
+			NGrams.java - Represents all the N-grams of a given size. The context recognition is placed here for convenience.
+			NGramHandler.java - Handler that contains all n-grams for a specific size.
 			Grammar.java - Handles checking for various grammar constraints.
 	raw/
 		Raw data, includes case sensitive corpus and lowercase corpus along with the books used to create them. Makefile to run KYLM to calculate N-grams and create ARPA-files.
