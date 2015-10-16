@@ -4,10 +4,73 @@ import java.util.Scanner;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static boolean useGrammar = true;
+	public static boolean useContext = true;
 	
-		Path p = FileSystems.getDefault().getPath("ml.model.arpa");
+	public static void main(String[] args) {
+		
+		//Default to kneser ney smoothed N-grams
+		String path = "kn.model.arpa";
+		//Choose using command line argument
+		if(args.length > 0){
+			switch (args[0]){
+				case "kn": 
+					path = "kn.model.arpa";
+					break;
+				case "abs": 
+					path = "abs.model.arpa";
+					break;
+				case "ml": 
+					path = "ml.model.arpa";
+					break;
+				case "knlc": 
+					path = "kn.model.lowercase.arpa";
+					break;
+				case "abslc": 
+					path = "abs.model.lowercase.arpa";
+					break;
+				case "mllc": 
+					path = "ml.model.lowercase.arpa";
+					break;
+				default:
+					System.out.println("Invalid first argument, arpa file!");
+					System.exit(0);
+			}
+		}
+		// Second argument is whether or not to use grammar
+		if(args.length > 1){
+			switch (args[1]){
+			case "grammar": 
+				useGrammar = true;
+				break;
+			case "nogrammar": 
+				useGrammar = false;
+				break;
+			default:
+				System.out.println("Invalid second argument, choose grammar or nogrammar!");
+				System.exit(0);
+			}
+		}
+		// Second argument is whether or not to use grammar
+		if(args.length > 2){
+			switch (args[2]){
+			case "context": 
+				useContext = true;
+				break;
+			case "nocontext": 
+				useContext = false;
+				break;
+			default:
+				System.out.println("Invalid third argument, choose context or nocontext!");
+				System.exit(0);
+			}
+		}
+		
+		System.out.println("Using ARPA file: "+path+" , Grammar:"+useGrammar+" , Context:"+useContext );
+		Path p = FileSystems.getDefault().getPath(path);
+		
 		System.out.println("Creating datastructure for N-grams...");
+		//Send path to ARPA-file and POS
 		NGrams grams = new NGrams(p, "en-pos-maxent.bin");
 		
 		System.out.println("Starting user interface...\n");
@@ -28,12 +91,14 @@ public class Main {
 				System.out.println("\nGetting prediction for sentence: "+sentence);
 				NGram[] result;
 				if(sentence.endsWith("*")){
+					//Get prediction with some letter given
 					result = grams.GetPrediction(sentence.substring(0, sentence.length()-1), numOfPred, maxNgSize);
 				}
 				else{
+					//Get prediction for whole word
 					result = grams.GetPredictionNextWord(sentence, numOfPred, maxNgSize);
 				}
-				
+				// Print all predictions
 				for(int i=0; i<result.length; i++){
 					String currentWord = result[i].GetLastWord();
 					System.out.print(Integer.toString(i)+":"+currentWord+"  ");
@@ -86,10 +151,6 @@ public class Main {
 				}
 			}
 		}
-		
-		
-		//NGram[] result = grams.GetPrediction("as well", 10, 5);
-
 	}
 
 }

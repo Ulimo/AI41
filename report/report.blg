@@ -4,45 +4,45 @@ The top-level auxiliary file: report.aux
 The style file: ieeetr.bst
 Database file #1: sources.bib
 Warning--empty institution in keystrokes
-You've used 4 entries,
+You've used 8 entries,
             1876 wiz_defined-function locations,
-            501 strings with 3977 characters,
-and the built_in function-call counts, 609 in all, are:
-= -- 49
-> -- 34
+            525 strings with 4587 characters,
+and the built_in function-call counts, 1239 in all, are:
+= -- 102
+> -- 69
 < -- 0
-+ -- 13
-- -- 9
-* -- 39
-:= -- 107
-add.period$ -- 5
-call.type$ -- 4
-change.case$ -- 5
++ -- 26
+- -- 18
+* -- 79
+:= -- 207
+add.period$ -- 10
+call.type$ -- 8
+change.case$ -- 9
 chr.to.int$ -- 0
-cite$ -- 5
-duplicate$ -- 23
-empty$ -- 66
-format.name$ -- 9
-if$ -- 139
+cite$ -- 9
+duplicate$ -- 54
+empty$ -- 138
+format.name$ -- 18
+if$ -- 291
 int.to.chr$ -- 0
-int.to.str$ -- 4
-missing$ -- 1
-newline$ -- 16
-num.names$ -- 4
-pop$ -- 20
+int.to.str$ -- 8
+missing$ -- 5
+newline$ -- 29
+num.names$ -- 8
+pop$ -- 38
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 10
+skip$ -- 20
 stack$ -- 0
 substring$ -- 0
-swap$ -- 1
+swap$ -- 4
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 4
-width$ -- 5
-write$ -- 35
+while$ -- 8
+width$ -- 9
+write$ -- 70
 (There was 1 warning)

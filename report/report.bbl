@@ -1,5 +1,22 @@
 \begin{thebibliography}{1}
 
+\bibitem{Lesher99effectsof}
+G.~W. Lesher, B.~J. Moulton, and D.~J. Higginbotham, ``Effects of ngram order
+  and training text size on word prediction,'' 1999.
+
+\bibitem{Wandmacher}
+T.~Wandmacher and J.~Antoine, ``Methods to integrate a language model with
+  semantic information for a word prediction component,'' {\em CoRR},
+  vol.~abs/0801.4716, 2008.
+
+\bibitem{DBLP:journals/corr/cs-CL-0009027}
+Y.~Even{-}Zohar and D.~Roth, ``A classification approach to word prediction,''
+  {\em CoRR}, vol.~cs.CL/0009027, 2000.
+
+\bibitem{Russel}
+S.~J. Russell and P.~Norvig, {\em Artificial Intelligence: A Modern Approach}.
+\newblock Pearson Education, 2~ed., 2003.
+
 \bibitem{keystrokes}
 K.~Trnka, D.~Yarrington, and K.~Mccoy, ``The keystroke savings limit in word
   prediction for aac,'' tech. rep., 2005.
