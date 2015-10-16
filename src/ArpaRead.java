@@ -24,17 +24,29 @@ public class ArpaRead {
 		}
 	}
 	
+	/**
+	 * Returns the n-gram handlers created from the arpa file
+	 * @return
+	 */
 	public HashMap<Integer, NGramHandler> GetNGrams()
 	{
 		return grams;
 	}
 	
+	/**
+	 * Read all lines in the arpa file
+	 * @param lines
+	 */
 	private void ReadLines(List<String> lines)
 	{
 		ReadHeader(lines); //Read the header data
 		ReadGrams(lines); //Read all the ngrams
 	}
 	
+	/**
+	 * Read the n-grams in an arpa file
+	 * @param lines
+	 */
 	private void ReadGrams(List<String> lines)
 	{
 		
@@ -79,6 +91,10 @@ public class ArpaRead {
 		}
 	}
 	
+	/**
+	 * Read header data in an arpa file
+	 * @param lines
+	 */
 	private void ReadHeader(List<String> lines)
 	{
 		
@@ -91,9 +107,12 @@ public class ArpaRead {
 			ReadData(s);
 			LineNumber++;
 		}
-		//LineNumber--;
 	}
 	
+	/**
+	 * Read how many n-grams that exist in the arpa file for each n-gram size
+	 * @param line
+	 */
 	private void ReadData(String line)
 	{
 		if(line.contains("ngram"))
@@ -114,6 +133,12 @@ public class ArpaRead {
 		}
 	}
 	
+	/**
+	 * Locates a line which contains a certain sequence of characters
+	 * @param lines
+	 * @param line
+	 * @return
+	 */
 	private int LocateLine(List<String> lines, String line)
 	{
 		int i = LineNumber;

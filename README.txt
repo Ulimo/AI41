@@ -8,8 +8,8 @@ File explanation:
 			Main.java - Contains the main function where the path to files are described and the command line user interface is defined.
 			ArpaRead.java - Represents an ARPA file reader, able to parse an ARPA formatted file and create a NGram Java object for every N-gram.
 			NGram.java - Represents a single N-gram.
-			NGrams.java - Represents all the N-grams of a given size(?). The context recognition is placed here for convenience.
-			NGramHandler.java - ?
+			NGrams.java - Represents all the N-grams of a given size. The context recognition is placed here for convenience.
+			NGramHandler.java - Handler that contains all n-grams for a specific size.
 			Grammar.java - Handles checking for various grammar constraints.
 	raw/
 		Raw data, includes case sensitive corpus and lowercase corpus along with the books used to create them. Makefile to run KYLM to calculate N-grams and create ARPA-files.
@@ -47,7 +47,7 @@ Compiling and running the word predictor:
 
 	The easiest way to run the word predictor is to run the Makefile in the root folder of the project using "make all". This compiles and runs the program using default values (Kneser-Ney Smoothing with case sensitive corpus, grammar constraints and context recognition switched on).
 
-	The commands for "make alL" are:
+	The commands for executed for "make all" are:
 		javac -classpath lib/opennlp-tools-1.6.0.jar:lib/opennlp-uima-1.6.0.jar src/*.java -d bin/
 		java -classpath bin:lib/opennlp-tools-1.6.0.jar:lib/opennlp-uima-1.6.0.jar Main
 
@@ -60,7 +60,6 @@ Compiling and running the word predictor:
 	Context recognition can be turned off using the third command line argument [context, nocontext].
 
 	Examples:
-
 	//Everything on, kneser-ney smoothing case sensitive:
 		java -classpath bin:lib/opennlp-tools-1.6.0.jar:lib/opennlp-uima-1.6.0.jar Main kn grammar context
 
@@ -70,7 +69,7 @@ Compiling and running the word predictor:
 User interface when running program:
 	When starting the program the user is first prompted to choose number of predictions to be displayed every time the word predictor predicts words. Recommended: 5.
 
-	After that the user is prompted to choose the maximum N-gram size to use. Recommended: 4.
+	After that the user is prompted to choose the maximum N-gram size to use. Max/Recommended: 4.
 
 	The user is then prompted to enter a sentence for which the next word should be predicted. This sentence can be:
 		1. Blank
