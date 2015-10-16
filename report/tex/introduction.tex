@@ -1,11 +1,24 @@
 \section{Introduction}
-Word prediction is an important part in Natural Language Processing (NLP) since in many tasks it is necessary to determine the next word [1].  Predicting words correctly can be a difficult task since there are a lot of factors that have to be taken into account. Grammar constraints and context of the input are often complex matters which need to be analyzed in order to make accurate predictions.
+
+Word predictors are programs that can estimate the sequence or part of the sequence of words for a given text sentences.Traditionally these kind of programs have been used in the the context of health care in aiding people with disabilities to communicate \cite{Lesher99effectsof}. During the last decades these programs have been a part in the field of augmentative communication but this time directed towards the border mass. It have become a tool for increasing efficiency of typing in general \cite{Lesher99effectsof}. 
+
+There are several ways of making word predictors. Most of the word prediction make use of N-gram language models to estimate the probability of the following word in a phrase \cite{Wandmacher}. N-grams are a way to group and sample words that occur next to each other in text. It grasps the probability of sequences of words rather than the single word alone. I the sampling of word sequences also captures part of the grammar in a language due to it keeps the order of the words within the sequences. The N i N-grams stand for the number of words in the word sequence sampled.
+
+There are several methods to even further refine the nature of natural language. 
+One way of the possible ways is to implement grammar constraints that take in account that words can/can not follow in any arbitrary order. In this way it’s possible to limit the number of possible words that might follow the most recent word predicted solly by probability but are not correct according to the semantics.
+
+Yet another way might also be to take in account the context of the text. By identifying different parts of the sentence construction, e.g. the acknowledgement of earlier written subjects and objects in main respectively dependent clauses, the next word can be predicted further. This could also add to the constraints of words possible due to need of matching with the already written words. 
  
-Gregory W. Lesher et.al[2] show that the performance has been seen to rely on training text size. It is mentioned in the report that the performance of a word predictor could be improved with syntax-based prediction which should be investigated.
+How to make word predictors more efficient is the main question of this project and it’s going to be looked into by the means of experiments. 
+
+\subsection{Problem statement/formulation}
+Word prediction is an important part in Natural Language Processing (NLP) since in many tasks it is necessary to determine the next word  \cite{DBLP:journals/corr/cs-CL-0009027}.  Predicting words correctly can be a difficult task since there are a lot of factors that have to be taken into account. Grammar constraints and context of the input are often complex matters which need to be analyzed in order to make accurate predictions.
  
-One goal of word predictors is to be able to give accurate results to sentences in different contexts [1]. This requires a way for the word predictor to recognize the context in the sentence.
+Gregory W. Lesher et.al \cite{Lesher99effectsof} show that the performance has been seen to rely on training text size. It is mentioned in the report that the performance of a word predictor could be improved with syntax-based prediction which should be investigated.
  
-Both syntax-based prediction (grammatical analysis) and context recognition require to be implemented along with a model. This work uses N-gram modelling since it is a common tool in NLP [3]. A problem with N-gram moddeling is that it uses training data which makes it possible that not all combinations of words occur, which requires a smoothing technique to give unseen N-grams some probability [4]. Smoothing techniques are a requirement for word prediction to be usable for different sentences than those in the training data.
+One goal of word predictors is to be able to give accurate results to sentences in different contexts \cite{DBLP:journals/corr/cs-CL-0009027}. This requires a way for the word predictor to recognize the context in the sentence.
+ 
+Both syntax-based prediction (grammatical analysis) and context recognition require to be implemented along with a model. This work uses N-gram modelling since it is a common tool in NLP \cite{Wandmacher}. A problem with N-gram moddeling is that it uses training data which makes it possible that not all combinations of words occur, which requires a smoothing technique to give unseen N-grams some probability \cite{Russel}. Smoothing techniques are a requirement for word prediction to be usable for different sentences than those in the training data.
  
 Combining  these techniques together: smoothing, grammatical rules and context recognition, is the problem this report focuses on, and how they can improve a word predictors' performance.
 
