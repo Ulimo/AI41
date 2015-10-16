@@ -7,7 +7,6 @@ The implemented word predictor had three basic components: N-grams with probabil
 The implemented grammar constraints worked by removing predictions that could be considered very unlikely to be grammatically correct.
 
 The implemented grammar constraints with ideas of why they should work were:
-
 \emph{Avoid repeated words} - When the user has entered a word it should be highly unlikely that the same word would appear directly after it.
 \emph{Avoid multiple conjunctions} - Only a small number of conjunctions are allowed, because a normal sentence rarely contains many conjunctions.
 \emph{Avoid verbs in succession} - An English sentence rarely has several verbs in succession. Verbs not in the corpus can be identified and more accurate predictions can be made by not allowing other verbs to follow.
@@ -15,26 +14,14 @@ The implemented grammar constraints with ideas of why they should work were:
 \emph{Possessive pronoun + adjective/noun} - A possessive pronoun is often followed by either an adjective or a noun, so any other word type is ignored.
 
 \paragraph{Context recognition}
-Context recognition was implemented by exchanging the word “it” with the first noun of the sentence, together with any possessive pronoun or determiner. For example, the sentence “my dog is nice and it is…” would be changed to “my dog is nice and my dog is…”. The word “it” will often point to the subject of the sentence.
-
-For some sentences the first occurring noun is not the subject but rather the object, for example in the sentence “I like the dog because it is...”. However, the implemented context recognition will work well even for sentences like this, because the first noun was “dog”, which in fact was what “it” referred to.
-
-The word “it” is not replaced when predicting the word directly after “it”, since it could sometimes make predictions grammatically incorrect.
+Context recognition was implemented by exchanging the word “it” with the first noun of the sentence, together with any possessive pronoun or determiner. For example, the sentence “my dog is nice and it is…” would be changed to “my dog is nice and my dog is…”. The word “it” will often point to the subject of the sentence. The word “it” is not replaced when predicting the word directly after “it”, since it could sometimes make predictions grammatically incorrect.
 
 \subsection{Evaluation}
-
-\begin{figure}[p]
-\center
-\includegraphics[width=0.7\textwidth]{img/experiment_diagram.png}
-\caption{Diagram showing how experiments were generated}
-\label{fig:experiments}
-\end{figure}
-
 To test our hypotheses, a qualitative inductive method was used. Evaluation and comparison of the different functionalities was made by measuring keystroke rates for typing whole sentences. This was a widely used method for similar projects\cite{keystrokes}, and suited our project as it is an objective performance evaluation, compared to perception testing which produces more subjective results.
 
 In the constructed keystroke experiment, for a given word, the number of keystrokes were the number of letters that the participant had to enter in order for the word predictor to suggest the word the participant meant to write. In this experiment, the word predictor might suggest the thought of word without any keystrokes, in which case the keystroke count for that word is zero. Spaces between words did not count as keystrokes.
 
-The process of generating experiments is shown in figure \ref{fig:experiments}. Four sentences that were thought to display the differences in the different functionalities were constructed. Tests were then performed for each sentence, for each combination of functionalities and for each smoothing technique, which made a total of 48 different tests. After that, some tests were rerun with case-insensitivity. POS tagging did not work well with case insensitivity so grammar constraints were therefore always set to \emph{off}, resulting in an additional 24 tests.
+In the experiments four sentences that were thought to display the differences in the different functionalities were constructed. Tests were then performed for each sentence, for each combination of functionalities and for each smoothing technique, which made a total of 48 different tests. After that, some tests were rerun with case-insensitivity. POS tagging did not work well with case insensitivity so grammar constraints were therefore always set to \emph{off}, resulting in an additional 24 tests.
 
 \paragraph{Test sentences}
 The motivation for the test sentences and their anticipated results were:
