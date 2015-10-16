@@ -1,9 +1,13 @@
+\subsection{Keystroke experiment}
+This experiment focused on testing the different sentences explained in \emph{test sentences} and how the different techniques applied in the work can change the number of keystrokes needed to complete a sentence.
+
+The results are shown in two different sections, with case sensitive n-grams, and with case insensitive n-grams. Every section contains three tables for the three different smoothing techniques: Kneser-ney, absolute discounting and maximum likelihood (no smoothing). Every column represent if grammar or context was used when counting the number of keystrokes needed.
 
 %\caption{Case-sensitive}
 {\footnotesize
 \begin{table}[H]
 \centering
-\caption{Some caption...}
+\caption{Kneser-ney and case-sensitive n-grams}
 \begin{tabular}{ |p{0.5\textwidth}|c|c|c|c| }
 	\hline
 	\multicolumn{5}{|c|}{Kneser-Nay} \\
@@ -24,7 +28,7 @@
 \vspace{-1cm}
 \begin{table}[H]
 \centering
-\caption{Some caption...}
+\caption{Absolute discounting and case-sensitive n-grams}
 \begin{tabular}{ |p{0.5\textwidth}|c|c|c|c| }
 	\hline
 	\multicolumn{5}{|c|}{Absolute discount} \\
@@ -45,7 +49,7 @@
 \vspace{-1cm}
 \begin{table}[H]
 \centering
-\caption{Some caption...}
+\caption{Maximum likelihood and case-sensitive n-grams}
 \begin{tabular}{ |p{0.5\textwidth}|c|c|c|c| }
 	\hline
 	\multicolumn{5}{|c|}{Maximum likelihood} \\
@@ -64,10 +68,12 @@
 \end{table}
 \vspace{-1cm}
 
+
+
 \begin{table}[H]
 %\caption{Case-insensitive}
 \centering
-\caption{Some caption...}
+\caption{Kneser-ney and case-insensitive n-grams}
 \begin{tabular}{ |p{0.5\textwidth}|c|c|c|c| }
 	\hline
 	\multicolumn{5}{|c|}{Kneser-Nay} \\
@@ -88,7 +94,7 @@
 \vspace{-1cm}
 \begin{table}[H]
 \centering
-\caption{Some caption...}
+\caption{Kneser-ney and case-insensitive n-grams}
 \begin{tabular}{ |p{0.5\textwidth}|c|c|c|c| }
 	\hline
 	\multicolumn{5}{|c|}{Absolute discount} \\
@@ -126,6 +132,9 @@
 	\hline
 \end{tabular}
 \end{table}
+
+\subsection{Context recognition}
+This chapter show some different results of the suggested words in different contextual scenarios and smoothing techniques. All the suggested words are from the case insensitive testing.
 
 \vspace{-1cm}
 \begin{table}[H]
